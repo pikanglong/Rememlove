@@ -1,0 +1,6 @@
+- users
+    - uid
+    - ......
+- membox（回忆宝箱相关）
+- checkin（恋爱打卡相关）
+- TODO
