@@ -1,6 +1,16 @@
 # BrainHole
 A repository for NJUPT mind-blowing programming week
 
+### 安装指南
+
+```
+composer install
+```
+
+```
+php artisan migrate
+```
+
 ### 需求分析
 
 - 菜单
