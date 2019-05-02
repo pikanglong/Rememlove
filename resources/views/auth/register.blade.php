@@ -142,10 +142,16 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="checkbox">
-                                        <label for="agreement"><input class="form-control" type="checkbox" name="agreement" id="agreement" required><span>我已阅读并同意隐私条款和服务条款</span></label>
+                                        <label for="agreement">
+                                            <input class="form-control" type="checkbox" name="agreement" id="agreement" required="">
+                                            <span class="checkbox-decorator">
+                                                <span class="check"></span>
+                                                <div class="ripple-container"></div>
+                                            </span>
+                                            <span>我已阅读并同意隐私条款和服务条款</span>
+                                        </label>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="card-footer text-right">
                                 <button type="submit" class="btn btn-danger">注册</button>

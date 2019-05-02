@@ -129,7 +129,14 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="checkbox">
-                                        <label for="remember"><input class="form-control" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}><span>{{ __('Remember Me') }}</span></label>
+                                        <label for="remember">
+                                            <input class="form-control" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <span class="checkbox-decorator">
+                                                <span class="check"></span>
+                                                <div class="ripple-container"></div>
+                                            </span>
+                                            <span>{{ __('Remember Me') }}</span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
