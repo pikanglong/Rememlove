@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function account(Request $request)
+    {
+        return Auth::check() ? redirect("/account/dashboard") : redirect("/login");
+    }
 }

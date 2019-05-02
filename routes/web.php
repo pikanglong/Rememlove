@@ -12,9 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',[
+        'page_title' => "欢迎",
+        'site_title' => "记恋",
+        'navigation' => "Home",
+    ]);
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/account', 'HomeController@account')->name('account');

@@ -69,4 +69,13 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function showRegistrationForm()
+    {
+        return view("auth.register", [
+            'page_title'=>"Register",
+            'site_title'=>"NOJ",
+            'navigation' => "Account"
+        ]);
+    }
 }

@@ -84,7 +84,6 @@
         display: inline-block;
     }
 </style>
-
 <div class="container mundb-standard-container">
     <div class="row justify-content-sm-center">
         <div class="col-sm-12 col-md-8 col-lg-6">
@@ -106,12 +105,41 @@
                 </div>
                 <div class="tab-content" id="accountTabContent">
                     <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                        <form class="needs-validation" action="{{ route('login') }}" method="post" id="login_form" novalidate>
-                            @csrf
+                        <form class="needs-validation" action="?action=login" method="post" id="login_form" novalidate>
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="email" class="bmd-label-floating">电子邮件地址</label>
-                                    <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" id="email" required>
+                                    <input type="email" name="email" class="form-control" id="login_email" required>
+                                    <div class="invalid-feedback">请填写您的电子邮件地址</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="bmd-label-floating">密码</label>
+                                    <input type="password" name="password" class="form-control" id="login_password" required>
+                                    <div class="invalid-feedback">请填写您的密码</div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-right">
+                                {{-- <a href="{{ route('password.request') }}"><button type="button" class="btn btn-secondary">Forget your password?</button></a> --}}
+                                <button type="submit" class="btn btn-danger">登录</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade " id="register" role="tabpanel" aria-labelledby="register-tab">
+                        <form class="needs-validation" method="POST" action="{{ route('register') }}" id="register_form" novalidate>
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="email" class="bmd-label-floating">昵称</label>
+                                    <input type="email" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="register_nick_name" value="{{ old('name') }}" required>
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="bmd-label-floating">电子邮件地址</label>
+                                    <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="register_email" value="{{ old('email') }}" required>
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
@@ -120,7 +148,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="bmd-label-floating">密码</label>
-                                    <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" required>
+                                    <input type="password" name="password" class="form-control" id="register_password" required>
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('password') }}</strong>
@@ -128,14 +156,19 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
+                                    <label for="password" class="bmd-label-floating">确认密码</label>
+                                    <input type="password" name="password_confirmation" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="register_password_again" required>
+                                    <div class="invalid-feedback">请确认您的密码</div>
+                                </div>
+                                <div class="form-group">
                                     <div class="checkbox">
-                                        <label for="remember"><input class="form-control" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}><span>{{ __('Remember Me') }}</span></label>
+                                        <label for="agreement"><input class="form-control" type="checkbox" name="agreement" id="agreement" required><span>I agree with the terms</span></label>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="card-footer text-right">
-                                <a href="{{ route('password.request') }}"><button type="button" class="btn btn-secondary">忘记密码</button></a>
-                                <button type="submit" class="btn btn-danger">登录</button>
+                                <button type="submit" class="btn btn-danger">注册</button>
                             </div>
                         </form>
                     </div>
@@ -144,16 +177,18 @@
         </div>
     </div>
 </div>
+
 <script>
     window.addEventListener("load",function() {
         $('loading').css({"opacity":"0","pointer-events":"none"});
 
         $('#login-tab').on('click', function (e) {
             e.preventDefault();
+            $('#nav-tabs-indicator').css("left", "0px");
         })
         $('#register-tab').on('click', function (e) {
             e.preventDefault();
-            location.href="/register";
+            $('#nav-tabs-indicator').css("left", "50%");
         })
 
         $('input:-webkit-autofill').each(function(){
@@ -163,9 +198,5 @@
                 $(this).parent().addClass('is-filled');
             }
         });
-
     }, false);
-
 </script>
-
-@endsection
