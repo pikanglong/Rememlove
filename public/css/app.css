@@ -1,5 +1,5 @@
 .navbar-app {
-  background-color: #f45a8d;
+  background-color: #f65e71;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
@@ -17,6 +17,47 @@
 
 .searchb {
   size: 24px 24px;
+}
+
+.card-app {
+  overflow: hidden;
+  display: block;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 30px;
+  border-radius: 4px;
+  transition: 0.3s ease-out 0s;
+  color: #7a8e97;
+  background: #fff;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.card-head {
+  padding-bottom: 5px !important;
+}
+
+.app-pic {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+avatar {
+  float: left;
+  position: relative;
+}
+
+avatar > img {
+  width: inherit;
+  height: inherit;
+  border-radius: 2000px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 30px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+avatar > p {
+  display: inline-block;
 }
 
 timeline {

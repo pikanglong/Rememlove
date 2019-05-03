@@ -27,7 +27,7 @@ class HomeController extends Controller
         return Auth::check() ? view('home',[
             'page_title'=>"主页",
             'site_title'=>"记恋",
-            'navigation' => ""
+            'navigation' => "Home"
         ]) : view('welcome',[
             'page_title' => "欢迎",
             'site_title' => "记恋",
