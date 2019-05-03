@@ -41,11 +41,89 @@
         text-align: center;
         color: rgba(0, 0, 0, 0.42);
     }
+    .caption-data {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    text-align: center;
+}
+.main-left{
+    margin-top:20vh;
+    margin-bottom: 2rem;
+}
+.reg-card{
+    margin: auto;
+    width: 20rem;
+    margin-bottom: 2rem;
+}
+.reg-form{
+    margin: 0;
+}
 </style>
 
-<div class="container mundb-standard-container">
+<div class="container-fluid mundb-standard-container">
     <div class="row">
-        这是未登录时的首页
+        <div class="col-12 col-md-6">
+        <div class="main-left text-center">
+            <h1 style="color:#ff4081;padding:20px;display:inline-block;">记恋</h1>
+            <h4>记录恋爱每一步</h4>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card reg-card justify-content-sm-center">
+                <div class="card-header text-center">
+                    <h5>现在就加入吧！</h5>
+                </div>
+                <form class="reg-form needs-validation" method="POST" action="{{ route('register') }}" id="register_form" novalidate>
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="email" class="bmd-label-floating">昵称</label>
+                                <input type="email" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="register_nick_name" value="{{ old('name') }}" required>
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="bmd-label-floating">电子邮件地址</label>
+                                <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="register_email" value="{{ old('email') }}" required>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="bmd-label-floating">密码</label>
+                                <input type="password" name="password" class="form-control" id="register_password" required>
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label for="agreement">
+                                        <input class="form-control" type="checkbox" name="agreement" id="agreement" required="">
+                                        <span class="checkbox-decorator">
+                                            <span class="check"></span>
+                                            <div class="ripple-container"></div>
+                                        </span>
+                                        <span>我已阅读并同意隐私条款和服务条款</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-danger">注册</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
