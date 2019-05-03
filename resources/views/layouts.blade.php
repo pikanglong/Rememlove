@@ -111,6 +111,7 @@
             <p>正在加载中</p>
         </div>
     </loading>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/static/fonts/Roboto/roboto.css">
     <link rel="stylesheet" href="/static/fonts/Montserrat/montserrat.css">
     <link rel="stylesheet" href="/static/css/bootstrap-material-design.min.css">
@@ -122,7 +123,7 @@
     <div class="mundb-background-container">
         <img src="">
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom:30px;position:sticky;top:0;z-index:999;">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-app" style="margin-bottom:30px;position:sticky;top:0;z-index:999;">
         <a class="navbar-brand" href="/">
             <img src="/static/img/logo.png" height="30"> 记恋
         </a>
@@ -177,12 +178,17 @@
         </div>
     </nav>
     @yield('template')
-    <footer class="mundb-footer bg-dark text-light d-print-none">
+    <footer class="mundb-footer text-light d-print-none footer-app">
         Copyright &copy; 记恋 2019, all rights reserved.
     </footer>
     <script src="/static/library/jquery/dist/jquery.min.js"></script>
     <script src="/static/js/popper.min.js"></script>
     <script src="/static/js/snackbar.min.js"></script>
     <script src="/static/js/bootstrap-material-design.js"></script>
+    <script>
+            window.addEventListener("load",function() {
+                $('loading').css({"opacity":"0","pointer-events":"none"});
+            }, false);
+    </script>
 </body>
 </html>

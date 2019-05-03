@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,7 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return Auth::check() ? view('home',[
+            'page_title'=>"主页",
+            'site_title'=>"记恋",
+            'navigation' => ""
+        ]) : view('welcome',[
+            'page_title' => "欢迎",
+            'site_title' => "记恋",
+            'navigation' => "Home",
+        ]);
     }
 
     public function account(Request $request)

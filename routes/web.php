@@ -11,13 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome',[
-        'page_title' => "欢迎",
-        'site_title' => "记恋",
-        'navigation' => "Home",
-    ]);
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 

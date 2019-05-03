@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="col-12 col-md-6">
-            <div class="card reg-card justify-content-sm-center">
+            <div class="card reg-card justify-content-sm-center animated bounceInRight">
                 <div class="card-header text-center">
                     <h5>现在就加入吧！</h5>
                 </div>
@@ -118,19 +118,13 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="card-footer text-right">
-                        <button type="submit" class="btn btn-danger">注册</button>
+                    <div class="card-footer text-center">
+                        <button type="submit" class="btn btn-outline-danger">注册</button>
+                        <p>已有账号？</p><button type="submit" class="btn btn-outline-success">马上登录</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    window.addEventListener("load",function() {
-        $('loading').css({"opacity":"0","pointer-events":"none"});
-    }, false);
-</script>
-
 @endsection

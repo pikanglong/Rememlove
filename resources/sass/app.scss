@@ -1,16 +1,68 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-    background-color: #fff;
+.navbar-app {
+    background-color: $primary_color;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.navbar-app > a {
+    color: $text_color;
+}
+.navbar-app > a:active {
+    color: $text_active;
+}
+.footer-app {
+    background-color: $footer_color;
 }
 .searchb {
     size: 24px 24px;
 }
+
+timeline {
+    display: block;
+    padding: 3em 2em 2em;
+    position: relative;
+    color: rgba(0, 0, 0, 0.7);
+    border-left: 0.1rem solid rgba(0, 0, 0, 0.3);
+}
+timeline p {
+    font-size: 1rem;
+}
+timeline::before {
+    content: attr(date);
+    position: absolute;
+    left: 2rem;
+    font-weight: bold;
+    top: 1rem;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: .785rem;
+    line-height: 1rem;
+}
+timeline::after {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    top: 1rem;
+    position: absolute;
+    left: -0.55rem;
+    border-radius: 10px;
+    content: '';
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    background: white;
+}
+timeline:last-child {
+    border-image-source: linear-gradient(rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0));
+    border-image-slice: 1 0 0 100%;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-width: 0.1rem;
+}
+
