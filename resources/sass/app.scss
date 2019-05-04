@@ -18,7 +18,10 @@
     color: $text_active;
 }
 .footer-app {
-    background-color: $footer_color;
+    background-color: $footer2_color !important;
+}
+.card-buttom {
+    background-color: $card_buttom_color !important;
 }
 .searchb {
     size: 24px 24px;

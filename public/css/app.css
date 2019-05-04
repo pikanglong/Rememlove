@@ -12,7 +12,11 @@
 }
 
 .footer-app {
-  background-color: #99a2aa;
+  background-color: #7a8e97 !important;
+}
+
+.card-buttom {
+  background-color: #f4f4f4 !important;
 }
 
 .searchb {

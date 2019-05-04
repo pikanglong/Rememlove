@@ -61,7 +61,8 @@
     margin: 0;
 }
 </style>
-
+{{ $errors }}
+{{ $errors->first('password')}}
 <div class="container-fluid mundb-standard-container">
     <div class="row">
         <div class="col-12 col-md-6">
@@ -106,6 +107,11 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                    <label for="password" class="bmd-label-floating">确认密码</label>
+                                    <input type="password" name="password_confirmation" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="register_password_again" required>
+                                    <div class="invalid-feedback">请确认您的密码</div>
+                            </div>
+                            <div class="form-group">
                                 <div class="checkbox">
                                     <label for="agreement">
                                         <input class="form-control" type="checkbox" name="agreement" id="agreement" required="">
@@ -118,11 +124,14 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="card-footer text-center">
-                        <button type="submit" class="btn btn-outline-danger">注册</button>
-                        <p>已有账号？</p><button type="submit" class="btn btn-outline-success">马上登录</button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-outline-danger">注册</button>
+                        </div>
+                        </form>
+                        <div class="card-footer text-center card-buttom">
+                        <p class="mb-3 mt-0">已有账号？</p>
+                        <button class="btn btn-outline-success" onclick="window.location.href='/login'">马上登录</button>
                     </div>
-                </form>
             </div>
         </div>
     </div>
