@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Checkin extends Model
+class Binding extends Model
 {
-    protected $table = 'checkin';
+    protected $table = 'binding';
 }

@@ -47,6 +47,29 @@
 .app-pic {
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.blur {
+  -webkit-filter: blur(5px);
+  /* Chrome, Opera */
+  -moz-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.showdiv {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  z-index: 1000;
 }
 
 avatar {

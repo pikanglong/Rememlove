@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Checkin extends Model
+class Membox extends Model
 {
-    protected $table = 'checkin';
+    protected $table = 'membox';
 }
