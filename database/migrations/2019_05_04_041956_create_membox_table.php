@@ -35,6 +35,6 @@ class CreateMemboxTable extends Migration
      */
     public function down()
     {
-        Schema::drop('membox');
+        Schema::dropIfExists('membox');
     }
 }

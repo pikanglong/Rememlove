@@ -29,6 +29,6 @@ class CreateBindingTable extends Migration
      */
     public function down()
     {
-        Schema::drop('binding');
+        Schema::dropIfExists('binding');
     }
 }

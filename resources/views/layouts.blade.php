@@ -144,8 +144,8 @@
             <button class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
         </div>
         <a href="javascript:;" class="mdui-fab-mini">
-        <avatar style="height:100%">
-                <img src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg" alt="avatar">
+        <avatar style="width:98%">
+            <img src="{{ Auth::user()->avatar }}" alt="avatar">
         </avatar>
         </a>
 
@@ -205,11 +205,11 @@
         </div>
     </div>
     </header>
-    <div class="mdui-drawer " id="drawer">
+    <div class="mdui-drawer" id="drawer">
             <ul class="mdui-list">
               <li class="mdui-list-item mdui-ripple">
                 <i class="mdui-list-item-icon mdui-icon material-icons">move_to_inbox</i>
-                <div class="mdui-list-item-content">圈子</div>
+                <div class="mdui-list-item-content">广场</div>
               </li>
               <li class="mdui-list-item mdui-ripple">
                 <i class="mdui-list-item-icon mdui-icon material-icons">star</i>
