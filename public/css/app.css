@@ -66,10 +66,22 @@
   display: block;
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 50%;
+  left: 0;
+  width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 10000;
+  background-color: grey;
+  opacity: 0.8;
+}
+
+.showdiv2 {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10001;
 }
 
 avatar {
