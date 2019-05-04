@@ -99,7 +99,7 @@
         }
     </style>
 </head>
-<body>
+<body class="mdui-theme-primary-red mdui-theme-accent-pink page">
     <loading>
         <div>
             <div class="lds-ellipsis">
@@ -114,24 +114,41 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/static/fonts/Roboto/roboto.css">
     <link rel="stylesheet" href="/static/fonts/Montserrat/montserrat.css">
-    <link rel="stylesheet" href="/static/css/bootstrap-material-design.min.css">
-    <link rel="stylesheet" href="/static/css/wemd-color-scheme.css">
-    <link rel="stylesheet" href="/static/css/main.css">
+    {{-- <link rel="stylesheet" href="/static/css/bootstrap-material-design.min.css"> --}}
+    {{-- <link rel="stylesheet" href="/static/css/wemd-color-scheme.css"> --}}
     <link rel="stylesheet" href="/static/css/animate.min.css">
+    <link rel="stylesheet" href="/static/mdui/css/mdui.min.css">
     <link rel="stylesheet" href="/static/fonts/MDI-WXSS/MDI.css">
     <link rel="stylesheet" href="/static/fonts/Devicon/devicon.css">
     <div class="mundb-background-container">
         <img src="">
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-app" style="margin-bottom:30px;position:sticky;top:0;z-index:999;">
-        <a class="navbar-brand" href="/">
+    <div class="mdui-appbar navbar-app" style="position:sticky;top:0;z-index:999;">
+        <div class="mdui-toolbar mdui-color-theme">
+        <a class="mdui-typo-headline" href="/">
             <img src="/static/img/logo.png" height="30"> 记恋
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </button> --}}
+        <a href="" class="mdui-typo-title">{{ $page_title }}</a>
+        <div class="mdui-toolbar-spacer"></div>
+        @guest
+        <a href="javascript:;" class="mdui-btn">登录</a>
+        @else
+        <div class="mdui-textfield mdui-textfield-expandable mdui-float-right">
+            <button class="mdui-textfield-icon mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></button>
+            <input class="mdui-textfield-input" type="text" placeholder="Search"/>
+            <button class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
+        </div>
+        <a href="javascript:;" class="mdui-fab-mini">
+        <avatar style="height:100%">
+                <img src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg" alt="avatar">
+        </avatar>
+        </a>
+        @endguest
+        {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item />">
                     <a class="nav-link @if ($navigation === "Home") active @endif" href="/">首页 <span class="sr-only">(current)</span></a>
@@ -158,14 +175,7 @@
                         </form>
                     </div>
                 </li>
-                <script>
-                  window.addEventListener("load", function () {
-                    $('.dropdown-header').click(function (e) {
-                      e.stopPropagation();
-                    });
-                  }, false);
-                </script>
-            @endguest
+            @endguest --}}
                     <script>
                         window.addEventListener("load", function () {
                         $('.dropdown-header').click(function (e) {
@@ -176,15 +186,34 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </div>
+    </div>
     @yield('template')
-    <footer class="mundb-footer text-light d-print-none footer-app">
-        Copyright &copy; 记恋 2019, all rights reserved.
-    </footer>
+    <div class="mdui-fab-wrapper" id="exampleFab" mdui-fab="{trigger: 'hover'}">
+            <button class="mdui-fab mdui-ripple mdui-color-theme-accent">
+              <!-- 默认显示的图标 -->
+              <i class="mdui-icon material-icons">add</i>
+
+              <!-- 在拨号菜单开始打开时，平滑切换到该图标，若不需要切换图标，则可以省略该元素 -->
+              <i class="mdui-icon mdui-fab-opened material-icons">add</i>
+            </button>
+            <div class="mdui-fab-dial">
+              <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink" onclick="{{ route('logout') }}"><i class="mdui-icon material-icons">backup</i></button>
+              <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red"><i class="mdui-icon material-icons">bookmark</i></button>
+              <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-orange"><i class="mdui-icon material-icons">access_alarms</i></button>
+              <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-blue"><i class="mdui-icon material-icons">touch_app</i></button>
+            </div>
+    </div>
+    <div class="mdui-bottom-nav mdui-bottom-nav-text-auto mdui-color-blue-grey mundb-footer">
+    {{-- <footer class="  d-print-none footer-app"> --}}
+        <p>&copy;2019 记恋</p>
+    {{-- </footer> --}}
+    </div>
     <script src="/static/library/jquery/dist/jquery.min.js"></script>
-    <script src="/static/js/popper.min.js"></script>
+    {{-- <script src="/static/js/popper.min.js"></script>
     <script src="/static/js/snackbar.min.js"></script>
-    <script src="/static/js/bootstrap-material-design.js"></script>
+    <script src="/static/js/bootstrap-material-design.js"></script> --}}
+    <script src="/static/mdui/js/mdui.min.js"></script>
     <script>
             window.addEventListener("load",function() {
                 $('loading').css({"opacity":"0","pointer-events":"none"});

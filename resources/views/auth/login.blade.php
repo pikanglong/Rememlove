@@ -3,12 +3,17 @@
 @section('template')
 
 <style>
-    .form-control:focus,
-    .form-control:hover {
+    .cardsize{
+        width: 25rem;
+        justify-content: center;
+        margin: auto;
+    }
+    .mdui-textfield-input:focus,
+    .mdui-textfield-input:hover {
         border-bottom-width: 2px;
     }
 
-    form .form-group:last-of-type {
+    form .mdui-textfield:last-of-type {
         margin-bottom: 0;
     }
 
@@ -76,7 +81,7 @@
         box-shadow: none!important;
     }
 
-    .was-validated input[type="checkbox"].form-control:invalid+span+span {
+    .was-validated input[type="checkbox"].mdui-textfield-input:invalid+span+span {
         color: #f44336!important;
     }
 
@@ -85,71 +90,50 @@
     }
 </style>
 
-<div class="container mundb-standard-container">
-    <div class="row justify-content-sm-center">
-        <div class="col-sm-12 col-md-8 col-lg-6">
-            <div class="text-center" style="margin-top:10vh;margin-bottom:20px;">
-                <h1 style="padding:20px;display:inline-block;">记恋</h1>
-                <p>记录恋爱每一步</p>
+<div class="mdui-container mundb-standard-container">
+    <div class="cardsize">
+            <div class="mdui-text-center" style="margin-top:10vh;margin-bottom:20px;">
+                <div class="mdui-typo-display-3" style="color:#ff4081;padding:20px;display:inline-block;">「记恋」</div>
+                <div class="mdui-typo-display-1-opacity">记录恋爱每一步</div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs nav-justified nav-tabs-material" id="accountTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">登录</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">注册</a>
-                        </li>
-                        <div class="nav-tabs-indicator" id="nav-tabs-indicator" style="left: 0px;"></div>
-                    </ul>
-                </div>
-                <div class="tab-content" id="accountTabContent">
-                    <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                        <form class="needs-validation" action="{{ route('login') }}" method="post" id="login_form" novalidate>
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="email" class="bmd-label-floating">电子邮件地址</label>
-                                    <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" id="email" required>
-                                    @if ($errors->has('email'))
+            <div class="mdui-card @if($errors !== [] )animated shake @endif">
+                <form class="needs-validation" action="{{ route('login') }}" method="post" id="login_form" novalidate>
+                    @csrf
+                    <div class="mdui-card-content">
+                        <div class="mdui-textfield">
+                            <label for="email" class="mdui-textfield-label">电子邮件地址</label>
+                            <input type="email" name="email" class="mdui-textfield-input{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" id="email" required>
+                            @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
-                                    @endif
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="bmd-label-floating">密码</label>
-                                    <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" required>
+                            @endif
+                            </div>
+                                <div class="mdui-textfield">
+                                    <label for="password" class="mdui-textfield-label">密码</label>
+                                    <input type="password" name="password" class="mdui-textfield-input{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" required>
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('password') }}</strong>
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label for="remember">
-                                            <input class="form-control" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                            <span class="checkbox-decorator">
-                                                <span class="check"></span>
-                                                <div class="ripple-container"></div>
-                                            </span>
-                                            <span>{{ __('Remember Me') }}</span>
-                                        </label>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="card-footer text-right">
-                                <a href="{{ route('password.request') }}"><button type="button" class="btn btn-secondary">忘记密码</button></a>
-                                <button type="submit" class="btn btn-danger">登录</button>
+                            <div class="mdui-card-actions mdui-text-right">
+                                <div class="mdui-typo mdui-float-left mdui-m-l-3">
+                                    <p><a href="{{ route('password.request') }}">忘记密码</a></p>
+                                </div>
+                                <button type="submit" class="mdui-fab mdui-ripple mdui-color-theme-accent" style="top:2rem;z-index:10">
+                                    <i class="mdui-icon material-icons">chevron_right</i>
+                                </button>
                             </div>
                         </form>
+                        <div class="mdui-card-actions mdui-typo mdui-text-center card-buttom mdui-p-b-0">
+                            <p>还没有账号？<a href="/login">马上注册</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 </div>
 <script>
     window.addEventListener("load",function() {

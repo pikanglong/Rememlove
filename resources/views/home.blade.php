@@ -1,17 +1,17 @@
 @extends('layouts')
 
 @section('template')
-<div class="container mundb-standard-container">
+<div class="mdui-container-fluid mundb-standard-container">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
         </div>
     @endif
-    <h3 class="text-center">美好回忆</h3>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header card-head">
+    <h3 class="mdui-text-center">美好回忆</h3>
+    <div class="mdui-row mdui-justify-content-center">
+        <div class="mdui-col-md-8">
+            <div class="mdui-card">
+                <div class="mdui-card-header card-head">
                     <div class="media">
                         <avatar style="height:2.5rem;">
                             <img src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg" alt="avatar">
@@ -25,10 +25,10 @@
                         </div>
                 </div>
                 </div>
-                <div class="card-body p-3">
+                <div class="mdui-card-body mdui-p-a-3">
                     sdjfhadskjlgh adfkgj
-                    <div class="row">
-                        <div class="col-4 p-1">
+                    <div class="mdui-row">
+                        <div class="mdui-col-4 mdui-p-a-1">
                             <img class="app-pic" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
                         </div>
 

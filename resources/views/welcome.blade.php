@@ -61,76 +61,67 @@
     margin: 0;
 }
 </style>
-{{ $errors }}
-{{ $errors->first('password')}}
-<div class="container-fluid mundb-standard-container">
-    <div class="row">
-        <div class="col-12 col-md-6">
-        <div class="main-left text-center">
-            <h1 style="color:#ff4081;padding:20px;display:inline-block;">记恋</h1>
-            <h4>记录恋爱每一步</h4>
-            </div>
+<div class="mdui-container-fluid mundb-standard-container">
+    <div class="mdui-row">
+        <div class="mdui-col-12 mdui-col-md-6">
+        <div class="main-left mdui-text-center">
+            <div class="mdui-typo-display-4" style="color:#ff4081;padding:20px;display:inline-block;">「记恋」</div>
+            <div class="mdui-typo-display-2-opacity">记录恋爱每一步</div>
         </div>
-        <div class="col-12 col-md-6">
-            <div class="card reg-card justify-content-sm-center animated bounceInRight">
-                <div class="card-header text-center">
-                    <h5>现在就加入吧！</h5>
+        </div>
+        <div class="mdui-col-12 mdui-col-md-6">
+            <div class="mdui-card reg-card justify-content-sm-center animated bounceInRight">
+                <div class="mdui-card-header mdui-text-center">
+                    <h3>现在就加入吧！</h3>
                 </div>
-                <form class="reg-form needs-validation" method="POST" action="{{ route('register') }}" id="register_form" novalidate>
+                <form class="mdui-m-a-3 needs-validation" method="POST" action="{{ route('register') }}" id="register_form" novalidate>
                         @csrf
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="email" class="bmd-label-floating">昵称</label>
-                                <input type="email" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="register_nick_name" value="{{ old('name') }}" required>
+                        <div class="mdui-card-body mdui-p-3">
+                            <div class="mdui-textfield">
+                                <label for="name" class="mdui-textfield-label">昵称</label>
+                                <input type="email" name="name" class="mdui-textfield-input {{ $errors->has('name') ? ' is-invalid' : '' }}" id="register_nick_name" value="{{ old('name') }}" required>
                                 @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="mdui-textfield-error">
                                         <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                    </div>
                                 @endif
                             </div>
-                            <div class="form-group">
-                                <label for="email" class="bmd-label-floating">电子邮件地址</label>
-                                <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="register_email" value="{{ old('email') }}" required>
+                            <div class="mdui-textfield">
+                                <label for="email" class="mdui-textfield-label">电子邮件地址</label>
+                                <input type="email" name="email" class="mdui-textfield-input {{ $errors->has('email') ? ' is-invalid' : '' }}" id="register_email" value="{{ old('email') }}" required>
                                 @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="mdui-textfield-error">
                                         <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                    </div>
                                 @endif
                             </div>
-                            <div class="form-group">
-                                <label for="password" class="bmd-label-floating">密码</label>
-                                <input type="password" name="password" class="form-control" id="register_password" required>
+                            <div class="mdui-textfield">
+                                <label for="password" class="mdui-textfield-label">密码</label>
+                                <input type="password" name="password" class="mdui-textfield-input" id="register_password" required>
                                 @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="mdui-textfield-error">
                                         <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                    </div>
                                 @endif
                             </div>
-                            <div class="form-group">
-                                    <label for="password" class="bmd-label-floating">确认密码</label>
-                                    <input type="password" name="password_confirmation" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="register_password_again" required>
-                                    <div class="invalid-feedback">请确认您的密码</div>
+                            <div class="mdui-textfield">
+                                    <label for="password_confirmation" class="mdui-textfield-label">确认密码</label>
+                                    <input type="password" name="password_confirmation" class="mdui-textfield-input {{ $errors->has('password') ? ' is-invalid' : '' }}" id="register_password_again" required>
+                                    @if ($errors->has('password'))
+                                    <div class="mdui-textfield-error">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </div>
+                                    @endif
                             </div>
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label for="agreement">
-                                        <input class="form-control" type="checkbox" name="agreement" id="agreement" required="">
-                                        <span class="checkbox-decorator">
-                                            <span class="check"></span>
-                                            <div class="ripple-container"></div>
-                                        </span>
-                                        <span>我已阅读并同意隐私条款和服务条款</span>
-                                    </label>
-                                </div>
-                            </div>
+                            <div class="mdui-typo-caption-opacity mdui-m-b-3">注册即代表已阅读并同意隐私条款和服务条款</div>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-outline-danger">注册</button>
+                        <div class="mdui-text-center">
+                            <button type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme-accent">注册</button>
                         </div>
                         </form>
-                        <div class="card-footer text-center card-buttom">
-                        <p class="mb-3 mt-0">已有账号？</p>
-                        <button class="btn btn-outline-success" onclick="window.location.href='/login'">马上登录</button>
+                    <div class="mdui-card-footer mdui-text-center card-buttom mdui-p-b-3">
+                        <div class="mdui-typo-subheading-opacity mdui-m-a-3 mdui-p-t-3">已有账号？</div>
+                        <button class="mdui-btn mdui-btn-raised mdui-color-theme" onclick="window.location.href='/login'">马上登录</button>
                     </div>
             </div>
         </div>
