@@ -1,7 +1,7 @@
 @extends('layouts')
 
 @section('template')
-<div class="mdui-container-fluid mundb-standard-container">
+<div id="aaa" class="mdui-container-fluid mundb-standard-container">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -20,11 +20,10 @@
                     好！
                 </div>
                 <div class="mdui-card-media mdui-p-l-1">
-
                         <div class="mdui-row">
-                                <div class="mdui-col-sm-4 mdui-p-a-1">
-                                        <img class="app-pic mdui-img-fluid mdui-img-rounded" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
-                                </div>
+                            <div class="mdui-col-sm-4 mdui-p-a-1">
+                                <img class="app-pic mdui-img-fluid mdui-img-rounded" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
+                            </div>
                         </div>
                 </div>
                 <div class="mdui-card-actions card-buttom">
@@ -40,7 +39,7 @@
                         <span class="mdui-chip-icon"><i class="MDI share"></i></span>
                         <span class="mdui-chip-title">分享</span>
                     </div>
-                    <button class="mdui-btn mdui-btn-icon mdui-float-right mdui-color-theme">
+                    <button class="mdui-btn mdui-btn-icon mdui-float-right mdui-color-theme" onclick="show();">
                         <i class="mdui-icon material-icons">chevron_right</i>
                     </button>
                 </div>
@@ -49,6 +48,15 @@
         </div>
     </div>
 </div>
+<div id="aa" class="hide" style="background-color:bisque">
 
-
+</div>
+<script>
+    function show(){
+        $('#aaa').addClass('blur');
+        $('#aa').removeClass('hide');
+        $('#aa').addClass('showdiv animated bounceInRight');
+        console.log('aaa');
+    }
+</script>
 @endsection
