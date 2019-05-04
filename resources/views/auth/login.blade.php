@@ -101,22 +101,22 @@
                     @csrf
                     <div class="mdui-card-content">
                         <div class="mdui-textfield">
-                            <label for="email" class="mdui-textfield-label">电子邮件地址</label>
-                            <input type="email" name="email" class="mdui-textfield-input{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" id="email" required>
-                            @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                            @endif
-                            </div>
-                                <div class="mdui-textfield">
-                                    <label for="password" class="mdui-textfield-label">密码</label>
-                                    <input type="password" name="password" class="mdui-textfield-input{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" required>
-                                    @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif
+                            <label for="email" class="mdui-textfield-label">{{ __('E-Mail Address') }}</label>
+                            <input id="email" type="email" class="mdui-textfield-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="mdui-textfield">
+                            <label for="password" class="mdui-textfield-label">{{ __('Password') }}</label>
+                            <input id="password" type="password" class="mdui-textfield-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                                 </div>
                             </div>
                             <div class="mdui-card-actions mdui-text-right">
@@ -129,7 +129,7 @@
                             </div>
                         </form>
                         <div class="mdui-card-actions mdui-typo mdui-text-center card-buttom mdui-p-b-0">
-                            <p>还没有账号？<a href="/login">马上注册</a></p>
+                            <p>还没有账号？<a href="/register">马上注册</a></p>
                         </div>
                     </div>
                 </div>

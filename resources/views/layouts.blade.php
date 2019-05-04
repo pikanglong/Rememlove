@@ -135,7 +135,7 @@
         <a href="" class="mdui-typo-title">{{ $page_title }}</a>
         <div class="mdui-toolbar-spacer"></div>
         @guest
-        <a href="javascript:;" class="mdui-btn">登录</a>
+        <a href="/login" class="mdui-btn">登录</a>
         @else
         <div class="mdui-textfield mdui-textfield-expandable mdui-float-right">
             <button class="mdui-textfield-icon mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></button>

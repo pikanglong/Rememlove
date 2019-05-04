@@ -78,40 +78,39 @@
                         @csrf
                         <div class="mdui-card-body mdui-p-3">
                             <div class="mdui-textfield">
-                                <label for="name" class="mdui-textfield-label">昵称</label>
-                                <input type="email" name="name" class="mdui-textfield-input {{ $errors->has('name') ? ' is-invalid' : '' }}" id="register_nick_name" value="{{ old('name') }}" required>
-                                @if ($errors->has('name'))
-                                    <div class="mdui-textfield-error">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </div>
-                                @endif
+                                {{-- TODO
+                                当error中使用mdui-textfield-error的class时有一个bug
+                                使用invalid-feedback可以解决
+                                但是会变丑 --}}
+                                <label for="name" class="mdui-textfield-label">{{ __('Name') }}</label>
+                                <input id="name" type="text" class="mdui-textfield-input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mdui-textfield">
-                                <label for="email" class="mdui-textfield-label">电子邮件地址</label>
-                                <input type="email" name="email" class="mdui-textfield-input {{ $errors->has('email') ? ' is-invalid' : '' }}" id="register_email" value="{{ old('email') }}" required>
-                                @if ($errors->has('email'))
-                                    <div class="mdui-textfield-error">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </div>
-                                @endif
+                                <label for="email" class="mdui-textfield-label">{{ __('E-Mail Address') }}</label>
+                                <input id="email" type="email" class="mdui-textfield-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mdui-textfield">
-                                <label for="password" class="mdui-textfield-label">密码</label>
-                                <input type="password" name="password" class="mdui-textfield-input" id="register_password" required>
-                                @if ($errors->has('password'))
-                                    <div class="mdui-textfield-error">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </div>
-                                @endif
+                                <label for="password" class="mdui-textfield-label">{{ __('Password') }}</label>
+                                <input id="password" type="password" class="mdui-textfield-input @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mdui-textfield">
-                                    <label for="password_confirmation" class="mdui-textfield-label">确认密码</label>
-                                    <input type="password" name="password_confirmation" class="mdui-textfield-input {{ $errors->has('password') ? ' is-invalid' : '' }}" id="register_password_again" required>
-                                    @if ($errors->has('password'))
-                                    <div class="mdui-textfield-error">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </div>
-                                    @endif
+                                    <label for="password_confirmation" class="mdui-textfield-label">{{ __('Confirm Password') }}</label>
+                                    <input id="password-confirm" type="password" class="mdui-textfield-input" name="password_confirmation" required autocomplete="new-password">
                             </div>
                             <div class="mdui-typo-caption-opacity mdui-m-b-3">注册即代表已阅读并同意隐私条款和服务条款</div>
                         </div>
