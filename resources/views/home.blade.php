@@ -21,7 +21,7 @@
                 </div>
                 <div class="mdui-card-media mdui-p-l-1">
                         <div class="mdui-row">
-                            <div class="mdui-col-sm-4 mdui-p-a-1">
+                            <div class="mdui-col-sm-4 mdui-p-a-1" onclick="show();">
                                 <img class="app-pic mdui-img-fluid mdui-img-rounded" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
                             </div>
                         </div>
@@ -47,16 +47,38 @@
             </div>
         </div>
     </div>
-</div>
-<div id="aa" class="hide" style="background-color:bisque">
+<div class="mdui-fab-wrapper" id="exampleFab" mdui-fab="{trigger: 'hover'}">
+        <button class="mdui-fab mdui-ripple mdui-color-theme-accent">
+          <!-- 默认显示的图标 -->
+          <i class="mdui-icon material-icons">add</i>
 
+          <!-- 在拨号菜单开始打开时，平滑切换到该图标，若不需要切换图标，则可以省略该元素 -->
+          <i class="mdui-icon mdui-fab-opened material-icons">add</i>
+        </button>
+        <div class="mdui-fab-dial">
+          <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink" onclick="{{ route('logout') }}"><i class="mdui-icon material-icons">backup</i></button>
+          <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red"><i class="mdui-icon material-icons">bookmark</i></button>
+          <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-orange"><i class="mdui-icon material-icons">access_alarms</i></button>
+          <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-blue"><i class="mdui-icon material-icons">touch_app</i></button>
+        </div>
+</div>
+<div id="pic_view" class="hide"><button class="mdui-btn mdui-btn-icon mdui-float-left mdui-color-theme" onclick="hide_pic_view();">
+            <i class="mdui-icon material-icons">chevron_left</i>
+        </button>
+        <img class="app-pic mdui-img-fluid mdui-img-rounded" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
 </div>
 <script>
     function show(){
-        $('#aaa').addClass('blur');
-        $('#aa').removeClass('hide');
-        $('#aa').addClass('showdiv animated bounceInRight');
-        console.log('aaa');
+        $('#fullview').removeClass('hide');
+        $('#fullview').addClass('showdiv');
+        $('#pic_view').removeClass('hide');
+        $('#pic_view').addClass('showdiv2 animated slideInDown');
+    }
+    function hide_pic_view(){
+        $('#fullview').removeClass('showdiv');
+        $('#fullview').addClass('hide');
+        $('#pic_view').addClass('hide');
+        $('#pic_view').removeClass('showdiv2 animated slideInDown');
     }
 </script>
 @endsection

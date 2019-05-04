@@ -129,10 +129,6 @@
         <a class="mdui-typo-headline" href="/">
             <img src="/static/img/logo.png" height="30"> 记恋
         </a>
-        {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button> --}}
         <a href="" class="mdui-typo-title">{{ $page_title }}</a>
         <div class="mdui-toolbar-spacer"></div>
         @guest
@@ -149,7 +145,6 @@
         </avatar>
         </a>
 
-
         {{-- TODO
         添加一个临时的logout
         后期转移到头像下拉栏中 --}}
@@ -162,37 +157,7 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
-
-
         @endguest
-        {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item />">
-                    <a class="nav-link @if ($navigation === "Home") active @endif" href="/">首页 <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <ul class="navbar-nav mundb-nav-right">
-                <li class="nav-item mundb-no-shrink />">
-                @guest
-                <a class="nav-link @if ($navigation === "Account") active @endif" href="/account">登录</a>
-                @else
-                <li class="nav-item dropdown mundb-btn-ucenter">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()["name"] }}</a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-header"><div><h6>{{ Auth::user()["name"] }}<br/><small>{{ Auth::user()->sid }}</small></h6></div></div>
-                        <div class="dropdown-divider"></div>
-                        <a  class="dropdown-item text-danger"
-                            href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            <i class="MDI exit-to-app text-danger"></i> {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endguest --}}
                     <script>
                         window.addEventListener("load", function () {
                         $('.dropdown-header').click(function (e) {
@@ -203,8 +168,8 @@
                 </li>
             </ul>
         </div>
-    </div>
     </header>
+    @auth
     <div class="mdui-drawer" id="drawer">
             <ul class="mdui-list">
               <li class="mdui-list-item mdui-ripple">
@@ -243,26 +208,14 @@
               </li>
             </ul>
     </div>
+    @endauth
     @yield('template')
-    <div class="mdui-fab-wrapper" id="exampleFab" mdui-fab="{trigger: 'hover'}">
-            <button class="mdui-fab mdui-ripple mdui-color-theme-accent">
-              <!-- 默认显示的图标 -->
-              <i class="mdui-icon material-icons">add</i>
-
-              <!-- 在拨号菜单开始打开时，平滑切换到该图标，若不需要切换图标，则可以省略该元素 -->
-              <i class="mdui-icon mdui-fab-opened material-icons">add</i>
-            </button>
-            <div class="mdui-fab-dial">
-              <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink" onclick="{{ route('logout') }}"><i class="mdui-icon material-icons">backup</i></button>
-              <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red"><i class="mdui-icon material-icons">bookmark</i></button>
-              <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-orange"><i class="mdui-icon material-icons">access_alarms</i></button>
-              <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-blue"><i class="mdui-icon material-icons">touch_app</i></button>
-            </div>
-    </div>
-    <div class="mdui-bottom-nav mdui-bottom-nav-text-auto mdui-color-blue-grey mundb-footer">
+    <footer class="mdui-bottom-nav mdui-bottom-nav-text-auto mdui-color-blue-grey mundb-footer">
     {{-- <footer class="  d-print-none footer-app"> --}}
         <p>&copy;2019 记恋</p>
     {{-- </footer> --}}
+    </footer>
+    <div id="fullview" class="hide">
     </div>
     <script src="/static/library/jquery/dist/jquery.min.js"></script>
     {{-- <script src="/static/js/popper.min.js"></script>
