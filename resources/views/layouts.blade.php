@@ -99,7 +99,7 @@
         }
     </style>
 </head>
-<body class="mdui-theme-primary-red mdui-theme-accent-pink page">
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-red mdui-theme-accent-pink page">
     <loading>
         <div>
             <div class="lds-ellipsis">
@@ -120,11 +120,12 @@
     <link rel="stylesheet" href="/static/mdui/css/mdui.min.css">
     <link rel="stylesheet" href="/static/fonts/MDI-WXSS/MDI.css">
     <link rel="stylesheet" href="/static/fonts/Devicon/devicon.css">
-    <div class="mundb-background-container">
+    {{-- <div class="mundb-background-container">
         <img src="">
-    </div>
-    <div class="mdui-appbar navbar-app" style="position:sticky;top:0;z-index:999;">
+    </div> --}}
+    <header class="mdui-appbar navbar-app mdui-appbar-fixed mdui-appbar-scroll-hide">
         <div class="mdui-toolbar mdui-color-theme">
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}"><i class="mdui-icon material-icons">menu</i></a>
         <a class="mdui-typo-headline" href="/">
             <img src="/static/img/logo.png" height="30"> 记恋
         </a>
@@ -203,6 +204,44 @@
             </ul>
         </div>
     </div>
+    </header>
+    <div class="mdui-drawer " id="drawer">
+            <ul class="mdui-list">
+              <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">move_to_inbox</i>
+                <div class="mdui-list-item-content">圈子</div>
+              </li>
+              <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">star</i>
+                <div class="mdui-list-item-content">回忆宝箱</div>
+              </li>
+              <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">send</i>
+                <div class="mdui-list-item-content">打卡</div>
+              </li>
+              <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">drafts</i>
+                <div class="mdui-list-item-content">日常</div>
+              </li>
+              <li class="mdui-subheader">发现</li>
+              <li class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
+                    <div class="mdui-list-item-content">趋势</div>
+                </li>
+                <li class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
+                    <div class="mdui-list-item-content">绑定对方</div>
+                </li>
+                <li class="mdui-subheader">账户</li>
+              <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
+                <div class="mdui-list-item-content">我</div>
+              </li>
+              <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">about</i>
+                <div class="mdui-list-item-content">关于</div>
+              </li>
+            </ul>
     </div>
     @yield('template')
     <div class="mdui-fab-wrapper" id="exampleFab" mdui-fab="{trigger: 'hover'}">
