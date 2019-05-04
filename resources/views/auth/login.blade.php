@@ -4,9 +4,11 @@
 
 <style>
     .cardsize{
-        width: 25rem;
         justify-content: center;
         margin: auto;
+    }
+    @media screen and (min-width: 450px){
+        .cardsize{width: 25rem;}
     }
     .mdui-textfield-input:focus,
     .mdui-textfield-input:hover {
