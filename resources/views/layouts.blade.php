@@ -147,6 +147,22 @@
                 <img src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg" alt="avatar">
         </avatar>
         </a>
+
+
+        {{-- TODO
+        添加一个临时的logout
+        后期转移到头像下拉栏中 --}}
+        <a  class="dropdown-item text-danger"
+        href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
+        <i class="MDI exit-to-app text-danger"></i> {{ __('Logout') }}
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+
+
         @endguest
         {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
