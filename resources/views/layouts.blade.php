@@ -174,37 +174,34 @@
             <ul class="mdui-list">
               <li class="mdui-list-item mdui-ripple">
                 <i class="mdui-list-item-icon mdui-icon material-icons">move_to_inbox</i>
-                <div class="mdui-list-item-content">广场</div>
+                <a class="mdui-list-item-content" href="/membox/square">广场</a>
               </li>
               <li class="mdui-list-item mdui-ripple">
                 <i class="mdui-list-item-icon mdui-icon material-icons">star</i>
-                <div class="mdui-list-item-content">回忆宝箱</div>
+                <a class="mdui-list-item-content" href="/membox/index">回忆宝箱</a>
               </li>
               <li class="mdui-list-item mdui-ripple">
                 <i class="mdui-list-item-icon mdui-icon material-icons">send</i>
-                <div class="mdui-list-item-content">打卡</div>
+                <a class="mdui-list-item-content" href="/checkin/">打卡</a>
               </li>
+
               <li class="mdui-list-item mdui-ripple">
                 <i class="mdui-list-item-icon mdui-icon material-icons">drafts</i>
                 <div class="mdui-list-item-content">日常</div>
               </li>
               <li class="mdui-subheader">发现</li>
-              <li class="mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
-                    <div class="mdui-list-item-content">趋势</div>
-                </li>
                 <li class="mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
-                    <div class="mdui-list-item-content">绑定对方</div>
+                    <i class="mdui-list-item-icon mdui-icon material-icons">usb</i>
+                    <a class="mdui-list-item-content" href="/binding/index">绑定对方</a>
                 </li>
                 <li class="mdui-subheader">账户</li>
               <li class="mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
-                <div class="mdui-list-item-content">我</div>
+                <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
+                <a class="mdui-list-item-content" href="/account/dashboard">我</a>
               </li>
               <li class="mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons">about</i>
-                <div class="mdui-list-item-content">关于</div>
+                <i class="mdui-list-item-icon mdui-icon material-icons">info</i>
+                <a class="mdui-list-item-content" href="/about">关于</a>
               </li>
             </ul>
     </div>
