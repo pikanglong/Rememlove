@@ -73,9 +73,9 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return view("auth.register", [
-            'page_title'=>"Register",
-            'site_title'=>"NOJ",
-            'navigation' => "Account"
+            'page_title' => "欢迎",
+            'site_title' => "记恋",
+            'navigation' => "Home",
         ]);
     }
 }

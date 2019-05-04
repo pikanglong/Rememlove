@@ -100,22 +100,22 @@
                 <form class="needs-validation" action="{{ route('login') }}" method="post" id="login_form" novalidate>
                     @csrf
                     <div class="mdui-card-content">
-                        <div class="mdui-textfield">
+                        <div class="mdui-textfield @error('email') mdui-textfield-invalid @enderror">
                             <label for="email" class="mdui-textfield-label">{{ __('E-Mail Address') }}</label>
                             <input id="email" type="email" class="mdui-textfield-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <div class="mdui-textfield-error">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
-                        <div class="mdui-textfield">
+                        <div class="mdui-textfield @error('password') mdui-textfield-invalid @enderror">
                             <label for="password" class="mdui-textfield-label">{{ __('Password') }}</label>
                             <input id="password" type="password" class="mdui-textfield-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                             @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <div class="mdui-textfield-error">
+                                    {{ $message }}
+                                </div>
                             @enderror
                                 </div>
                             </div>

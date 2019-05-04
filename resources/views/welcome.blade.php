@@ -75,53 +75,49 @@
                     <h3>现在就加入吧！</h3>
                 </div>
                 <form class="mdui-m-a-3 needs-validation" method="POST" action="{{ route('register') }}" id="register_form" novalidate>
-                        @csrf
-                        <div class="mdui-card-body mdui-p-3">
-                            <div class="mdui-textfield">
-                                {{-- TODO
-                                当error中使用mdui-textfield-error的class时有一个bug
-                                使用invalid-feedback可以解决
-                                但是会变丑 --}}
-                                <label for="name" class="mdui-textfield-label">{{ __('Name') }}</label>
-                                <input id="name" type="text" class="mdui-textfield-input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mdui-textfield">
-                                <label for="email" class="mdui-textfield-label">{{ __('E-Mail Address') }}</label>
-                                <input id="email" type="email" class="mdui-textfield-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mdui-textfield">
-                                <label for="password" class="mdui-textfield-label">{{ __('Password') }}</label>
-                                <input id="password" type="password" class="mdui-textfield-input @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mdui-textfield">
-                                    <label for="password_confirmation" class="mdui-textfield-label">{{ __('Confirm Password') }}</label>
-                                    <input id="password-confirm" type="password" class="mdui-textfield-input" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                            <div class="mdui-typo-caption-opacity mdui-m-b-3">注册即代表已阅读并同意隐私条款和服务条款</div>
+                    @csrf
+                    <div class="mdui-card-body mdui-p-3">
+                        <div class="mdui-textfield @error('name') mdui-textfield-invalid @enderror">
+                            <label for="name" class="mdui-textfield-label">{{ __('Name') }}</label>
+                            <input id="name" type="text" class="mdui-textfield-input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            @error('name')
+                                <div class="mdui-textfield-error">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
-                        <div class="mdui-text-center">
-                            <button type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme-accent">注册</button>
+                        <div class="mdui-textfield @error('email') mdui-textfield-invalid @enderror">
+                            <label for="email" class="mdui-textfield-label">{{ __('E-Mail Address') }}</label>
+                            <input id="email" type="email" class="mdui-textfield-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            @error('email')
+                                <div class="mdui-textfield-error">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
-                        </form>
-                    <div class="mdui-card-footer mdui-text-center card-buttom mdui-p-b-3">
-                        <div class="mdui-typo-subheading-opacity mdui-m-a-3 mdui-p-t-3">已有账号？</div>
-                        <button class="mdui-btn mdui-btn-raised mdui-color-theme" onclick="window.location.href='/login'">马上登录</button>
+                        <div class="mdui-textfield @error('password') mdui-textfield-invalid @enderror">
+                            <label for="password" class="mdui-textfield-label">{{ __('Password') }}</label>
+                            <input id="password" type="password" class="mdui-textfield-input @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            @error('password')
+                                <div class="mdui-textfield-error">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mdui-textfield">
+                                <label for="password_confirmation" class="mdui-textfield-label">{{ __('Confirm Password') }}</label>
+                                <input id="password-confirm" type="password" class="mdui-textfield-input" name="password_confirmation" required autocomplete="new-password">
+                        </div>
+                        <div class="mdui-typo-caption-opacity mdui-m-b-3">注册即代表已阅读并同意隐私条款和服务条款</div>
                     </div>
+                    <div class="mdui-text-center">
+                        <button id="submit" type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme-accent">注册</button>
+                    </div>
+                    </form>
+                <div class="mdui-card-footer mdui-text-center card-buttom mdui-p-b-3">
+                    <div class="mdui-typo-subheading-opacity mdui-m-a-3 mdui-p-t-3">已有账号？</div>
+                    <button class="mdui-btn mdui-btn-raised mdui-color-theme" onclick="window.location.href='/login'">马上登录</button>
+                </div>
             </div>
         </div>
     </div>

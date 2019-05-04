@@ -272,6 +272,7 @@
     <script>
             window.addEventListener("load",function() {
                 $('loading').css({"opacity":"0","pointer-events":"none"});
+                mdui.mutation()
             }, false);
     </script>
 </body>
