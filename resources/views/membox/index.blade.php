@@ -15,10 +15,7 @@
                 <div class="mdui-card-header mdui-p-a-1">
                     <img class="mdui-card-header-avatar" src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg"/>
                     <div class="mdui-card-header-title">{{$m -> username}}</div>
-                    <div class="mdui-card-header-subtitle">2019年5月4日 China <i class="MDI clock"></i>3天后对方可见</div>
-                </div>
-                <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
-                    {{$m -> title}}
+                    <div class="mdui-card-header-subtitle">{{$m -> created_at}}<i class="MDI clock"></i>{{$m -> time_see_remained}}对方可见</div>
                 </div>
                 <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
                     {{$m -> contents}}
