@@ -12,10 +12,11 @@ class MemboxController extends Controller
     public function square(){
         $Membox = new Membox();
         $membox = $Membox -> getPublicMembox();
-        dd($membox);
+        // dd($membox);
         return view('membox.square',[
             'page_title' => "广场",
             'site_title' => "记恋",
+            'membox' => $membox,
         ]);
     }
 

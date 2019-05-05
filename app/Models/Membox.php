@@ -14,13 +14,13 @@ class Membox extends Model
         foreach($membox as $m)
         {
             $m -> username = DB::table('users') -> where('id','=',$m -> uid) -> first() -> name;
-            $m -> time_see_remained = $this -> formatTime($m -> time_see);
+            $m -> time_see_remained = $this -> formatTime($m -> new_time_see);
         }
         return $membox;
     }
 
     public function getPublicMembox(){
-        $membox = DB::table('membox') -> where('private','=','0') -> where('deleted_at','=',null) -> where('time_see','<',time()) -> orderBy('created_at','desc') -> get();
+        $membox = DB::table('membox') -> where('private','=','0') -> where('deleted_at','=',null) -> where('new_time_see','<',time()) -> orderBy('created_at','desc') -> get();
         foreach($membox as $m)
         {
             $m -> username = DB::table('users') -> where('id','=',$m -> uid) -> first() -> name;

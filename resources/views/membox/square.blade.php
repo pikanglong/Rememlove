@@ -49,7 +49,7 @@
                     <div class="mdui-card-header mdui-p-a-1">
                         <img class="mdui-card-header-avatar" src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg"/>
                         <div class="mdui-card-header-title">{{$m -> username}}</div>
-                        <div class="mdui-card-header-subtitle">{{$m -> created_at}}<i class="MDI clock"></i>{{$m -> time_see_remained}}对方可见</div>
+                        <div class="mdui-card-header-subtitle">{{$m -> created_at}}</div>
                     </div>
                     <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
                         {{$m -> contents}}
