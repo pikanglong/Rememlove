@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Ajax;
 
+use App\Models\AjaxResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,6 @@ class AccountController extends Controller
         $path = $request->file('avatar')->store('public/avatars');
         $path = substr($path,6);
         Auth::user()->update(['avatar' => 'storage'.$path]);
-        return $path;
+        return AjaxResponse::success();
     }
 }
