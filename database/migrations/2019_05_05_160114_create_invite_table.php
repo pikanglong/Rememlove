@@ -15,8 +15,8 @@ class CreateInviteTable extends Migration
     {
         Schema::create('invite', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('userFrom_id');
-            $table->string('link');
+            $table->bigInteger('user_id');
+            $table->string('code');
             $table->timestamps();
         });
     }

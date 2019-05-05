@@ -14,8 +14,10 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'ajax'], function () {
-
+Route::group(['prefix' => 'ajax','namespace' => 'Ajax'], function () {
+    Route::group(['prefix' => 'binding'], function () {
+        Route::post('/newInviteCode', 'BindingController@newInviteCode')->middleware('auth')->name('binding_newInviteCode');
+    });
 });
 
 Route::group(['prefix' => 'membox'], function () {
@@ -38,7 +40,7 @@ Route::group(['prefix' => 'message'], function () {
     Route::get('/view', 'MessageController@view')->name('message_view');
 });
 
-Route::group(['prefix' => 'binding'], function () {
+Route::group(['prefix' => 'binding','middleware' => 'auth'], function () {
     Route::get('/', 'BindingController@index')->name('binding_index');
     Route::get('/index', 'BindingController@index')->name('binding_index');
     Route::get('/invite', 'BindingController@invite')->name('binding_invite');

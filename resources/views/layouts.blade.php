@@ -220,10 +220,10 @@
     <script src="/static/js/bootstrap-material-design.js"></script> --}}
     <script src="/static/mdui/js/mdui.min.js"></script>
     <script>
-            window.addEventListener("load",function() {
-                $('loading').css({"opacity":"0","pointer-events":"none"});
-                mdui.mutation()
-            }, false);
+        window.addEventListener("load",function() {
+            $('loading').css({"opacity":"0","pointer-events":"none"});
+            mdui.mutation()
+        }, false);
     </script>
 </body>
 </html>
