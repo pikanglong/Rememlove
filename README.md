@@ -3,13 +3,43 @@ A repository for NJUPT mind-blowing programming week
 
 ### 安装指南
 
+Here is detailed step about deploying 记恋:
+
+1. You need to have a server and installed [PHP](http://php.net/downloads.php) and [Composer](https://getcomposer.org);
+
+2. Clone ContestEase to your website folder;
+
+3. Change your website root to `public` folder and then, if there is a `open_basedir` restriction, remove it;
+
+4. Now run the following commands at the root folder of 记恋;
+
 ```
 composer install
 ```
 
+> Notice: you may find this step(or others) fails with message like "func() has been disabled for security reasons", it means you need to remove restrictions on those functions, basically Laravel and Composer require proc_open and proc_get_status to work properly.
+
+5. Almost done, you still got to modify a few folders and give them permission to write;
+
+```
+chmod -R 775 storage/
+chmod -R 775 bootstrap/
+```
+
+6. OK, right now we still need to configure environment, a typical `.env` just like the `.env.example`, you simply need to type the following codes;
+
+```
+cp .env.example .env
+vim .env
+```
+
+7. Now, we need to configure the database, thankfully Laravel have migration already;
+
 ```
 php artisan migrate
 ```
+
+8. 记恋's up-and-running, enjoy!
 
 ### 需求分析
 
@@ -36,12 +66,3 @@ php artisan migrate
     - ~~允许双方来一场辩论赛?!~~
     - 允许把恋爱日常存入回忆宝箱
     - 同样允许短链分享
-
-### 数据库分析
-
-- users
-    - uid
-    - ......
-- membox（回忆宝箱相关）
-- checkin（恋爱打卡相关）
-- TODO
