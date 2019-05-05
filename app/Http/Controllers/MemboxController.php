@@ -21,7 +21,7 @@ class MemboxController extends Controller
         $binding_id = $Binding -> getBindingIdByUid(Auth::user() -> id);
         $Membox = new Membox();
         $membox = $Membox -> getMembox($binding_id);
-        // dd($membox);
+        //dd($membox);
         return view('membox.index',[
             'page_title' => "时光宝盒",
             'site_title' => "记恋",
