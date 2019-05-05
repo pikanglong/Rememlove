@@ -10,7 +10,7 @@
         </div>
 
         <div class="mdui-panel" style="margin-top: 6rem;" mdui-panel>
-            <span class="mdui-typo-caption-opacity">现在就绑一个开始发粮食吧 : </span>
+            <span class="mdui-typo-caption-opacity mdui-p-b-1">现在就绑一个开始发粮食吧 : </span>
             <div class="mdui-panel-item">
                 <div class="mdui-panel-item-header">
                     通过二维码

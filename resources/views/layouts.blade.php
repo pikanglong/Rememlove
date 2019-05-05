@@ -140,31 +140,29 @@
             <button class="mdui-textfield-icon mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></button>
             <input class="mdui-textfield-input" type="text" placeholder="Search"/>
             <button class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
-        </div> --}}
-
-        <button class="mdui-btn mdui-color-theme-accent" mdui-menu="{target: '#ucenter'}">{{Auth::user()["name"]}}</button>
-
-<ul class="mdui-menu" id="ucenter">
-  <li class="mdui-menu-item">
-        <a href="javascript:;" class="mdui-fab-mini">
-                <avatar style="width:98%">
-                    <img src="{{ Auth::user()->avatar }}" alt="avatar">
-                </avatar>
+        </div> {{ Auth::user()->avatar }} --}}
+                <a class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-menu="{target: '#ucenter'}">
+                    <avatar style="width:100%;height: 100%">
+                        <img src="https://scontent-sin2-2.cdninstagram.com/vp/fbaa80544aa8e7be95668e1344fbb3b4/5D5E6E38/t51.2885-19/s320x320/54732379_639022049871378_1829252946760564736_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="avatar">
+                    </avatar>
                 </a>
-  </li>
-  <li class="mdui-divider"></li>
-  <li class="mdui-menu-item">
-        <a  class="mdui-ripple"
-        href="{{ route('logout') }}"
-        onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">
-        <i class="mdui-icon material-icons">exit_to_app</i> 登出
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-  </li>
-</ul>
+
+                    <ul class="mdui-menu" id="ucenter">
+                        <li class="mdui-menu-item" disabled>
+                            <a class="mdui-ripple">{{Auth::user()["name"]}}</a>
+                        </li>
+                        <li class="mdui-divider"></li>
+                        <li class="mdui-menu-item">
+                            <a  class="mdui-ripple"
+                                href="{{ route('logout') }}"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <i class="mdui-icon material-icons">exit_to_app</i> 退出登录
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
 
         @endguest
                 <script>
