@@ -160,13 +160,13 @@
             @csrf
         </form>
         @endguest
-                    <script>
-                        window.addEventListener("load", function () {
+                <script>
+                    window.addEventListener("load", function () {
                         $('.dropdown-header').click(function (e) {
                             e.stopPropagation();
-                            });
-                        }, false);
-                    </script>
+                        });
+                    }, false);
+                </script>
         </div>
     </header>
     @auth
