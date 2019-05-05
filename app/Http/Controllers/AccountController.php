@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DavidNineRoc\Qrcode\Factory;
+use DavidNineRoc\Qrcode\QrCodePlus;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -11,5 +14,18 @@ class AccountController extends Controller
             'page_title' => "用户",
             'site_title' => "记恋",
         ]);
+    }
+    public function getQRCode(){
+        $color = Factory::color(['#087', '#431', '#a2d', '#a2b',]);
+        // $image = Factory::image(imagecreatefrompng('DavidNineRoc.png'));
+        $id = Auth::id();
+        return (new QrCodePlus)
+            ->setText(env('APP_URL').'/invite/'.strval($id))
+            ->setMargin(50)
+            ->setOutput(function($handle){
+                header('Content-Type: image/jpeg');
+                imagejpeg($handle);
+            })
+            ->output($color);
     }
 }

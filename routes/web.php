@@ -47,6 +47,7 @@ Route::group(['prefix' => 'binding'], function () {
 Route::group(['prefix' => 'account'], function () {
     Route::get('/', 'AccountController@dashboard')->name('account_dashboard');
     Route::get('/dashboard', 'AccountController@dashboard')->name('account_dashboard');
+    Route::get('/getqrcode', 'AccountController@getqrcode')->name('getqrcode');
 });
 
 Route::get('/about', function () {

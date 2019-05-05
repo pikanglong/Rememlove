@@ -1,7 +1,7 @@
 @extends('layouts')
 
 @section('template')
-<div id="aaa" class="mdui-container-fluid mundb-standard-container">
+<div class="mdui-container-fluid mundb-standard-container">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -65,20 +65,20 @@
 <div id="pic_view" class="hide"><button class="mdui-btn mdui-btn-icon mdui-float-left mdui-color-theme" onclick="hide_pic_view();">
             <i class="mdui-icon material-icons">chevron_left</i>
         </button>
-        <img class="app-pic mdui-img-fluid mdui-img-rounded" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
+        <img class="mdui-center app-pic mdui-img-fluid mdui-img-rounded" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
 </div>
 <script>
     function show(){
         $('#fullview').removeClass('hide');
         $('#fullview').addClass('showdiv');
         $('#pic_view').removeClass('hide');
-        $('#pic_view').addClass('showdiv2 animated slideInDown');
+        $('#pic_view').addClass('showdiv2 animated bounce');
     }
     function hide_pic_view(){
         $('#fullview').removeClass('showdiv');
         $('#fullview').addClass('hide');
         $('#pic_view').addClass('hide');
-        $('#pic_view').removeClass('showdiv2 animated slideInDown');
+        $('#pic_view').removeClass('showdiv2 animated bounce');
     }
 </script>
 @endsection
