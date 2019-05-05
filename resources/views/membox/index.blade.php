@@ -10,26 +10,13 @@
     @endif
     <div class="mdui-row mdui-justify-content-center">
         <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4 mdui-col-lg-3 mdui-col-xl-2">
-                <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
-                        <div class="mdui-card-content mdui-m-a-1 mdui-p-a-0">
-                            <div class="mdui-btn-group">
-                                <button type="button" class="mdui-btn"><i class="mdui-icon material-icons">add</i></button>
-                                <button type="button" class="mdui-btn"><i class="mdui-icon material-icons">add_location</i></button>
-                            </div>
-                            <div class="mdui-textfield">
-                                <textarea class="mdui-textfield-input" placeholder="今天有什么新鲜事？"></textarea>
-                            </div>
-                        </div>
-                        <div class="mdui-card-media mdui-p-l-1">
-                            <div class="mdui-row-xs-3 mdui-row-sm-4 mdui-row-md-5 mdui-row-lg-6 mdui-row-xl-7 mdui-grid-list">
-                                <div class="mdui-col">
-                                    <div class="mdui-grid-tile" onclick="show();">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mdui-card-actions">
-                            <select class="mdui-select" mdui-select>
+            <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
+                <div class="mdui-card-content mdui-m-a-1 mdui-p-a-0">
+                    <div class="mdui-card-header mdui-p-a-1">
+                        <img class="mdui-card-header-avatar" src="{{asset(Auth::user()->avatar)}}"/>
+                        <div class="mdui-card-header-title">{{Auth::user()->name}}</div>
+                        <div class="mdui-card-header-subtitle">
+                            <select id="time-view" class="mdui-select">
                                 <option value="1">对方直接可见</option>
                                 <option value="2">1小时后对方可见</option>
                                 <option value="3">6小时后对方可见</option>
@@ -38,18 +25,55 @@
                                 <option value="6">私密</option>
                             </select>
                         </div>
-                        <button class="mdui-btn mdui-color-theme-accent" onclick="">
-                            <i class="mdui-icon material-icons">image</i>上传图片
-                        </button>
-                        <button class="mdui-fab mdui-float-right mdui-color-theme-accent" onclick="">
-                            <i class="mdui-icon material-icons">check</i>
-                        </button>
                     </div>
-            @foreach ($membox as $m)
+                    <button class="mdui-fab mdui-float-right mdui-color-theme-accent" style="top: -3rem;" onclick="submitmem();">
+                        <i class="mdui-icon material-icons">check</i>
+                    </button>
+                </div>
+                <div class="mdui-card-content">
+                    <div class="mdui-textfield">
+                        <textarea id="mem-text" class="mdui-textfield-input" placeholder="今天有什么新鲜事？"></textarea>
+                    </div>
+                </div>
+                <div class="mdui-card-media mdui-p-l-1">
+                    <div id="pic-list" class="mdui-row-xs-3 mdui-row-sm-4 mdui-row-md-5 mdui-row-lg-6 mdui-row-xl-7 mdui-grid-list">
+                        {{--                        <div class="mdui-col">--}}
+                        {{--                            <div class="mdui-grid-tile">--}}
+                        {{--                                <img class="app-pic mdui-img-fluid mdui-img-rounded" src="" alt="">--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
+                    </div>
+                    <input type="file" style="display: none;" id="pic_upload" accept="image/*" ref="input" onchange="SelectedImg(this.files)" multiple>
+                </div>
+                <div class="mdui-card-actions ">
+                    <button class="mdui-btn mdui-color-theme-accent " onclick="$('#pic_upload').click()">
+                        <i class="mdui-icon material-icons">image</i>上传图片
+                    </button>
+                    <button class="mdui-btn mdui-ripple mdui-color-theme" mdui-dialog="{target: '#encrypt'}">设置密码</button>
+                </div>
+                <div class="mdui-dialog" id="encrypt">
+                    <div class="mdui-dialog-title">加密你的美好回忆</div>
+                    <div class="mdui-dialog-content">请输入密码和提示。
+                        <div class="mdui-textfield">
+                            <input name="mem-pass" id="mem-pass" type="text" class="mdui-textfield-input" placeholder="设置密令" >
+                        </div>
+                        <div class="mdui-textfield">
+                            <input name="mem-pass-tip" id="mem-pass-tip" type="text" class="mdui-textfield-input" placeholder="密令提示" >
+                        </div>
+                    </div>
+                    <div class="mdui-dialog-actions">
+                        <button class="mdui-btn mdui-ripple">取消</button>
+                        <button class="mdui-btn mdui-ripple">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @foreach ($membox as $m)
+        <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4 mdui-col-lg-3 mdui-col-xl-2">
             <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
                 <div class="mdui-card-header mdui-p-a-1">
-                    <img class="mdui-card-header-avatar" src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg"/>
-                    <div class="mdui-card-header-title">{{$m -> username}}</div>
+                    <img class="mdui-card-header-avatar" src="{{asset($m->user->avatar)}}"/>
+                    <div class="mdui-card-header-title">{{$m -> user->name}}</div>
                     <div class="mdui-card-header-subtitle">{{$m -> created_at}}<i class="MDI clock"></i>{{$m -> time_see_remained}}对方可见</div>
                 </div>
                 <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
@@ -80,8 +104,8 @@
                     </button>
                 </div>
             </div>
-            @endforeach
         </div>
+        @endforeach
     </div>
 </div>
 
