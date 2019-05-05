@@ -177,7 +177,7 @@
                 <a class="mdui-list-item-content" href="/membox/square">广场</a>
               </li>
               <li class="mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons">star</i>
+                <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
                 <a class="mdui-list-item-content" href="/membox/index">回忆宝箱</a>
               </li>
               <li class="mdui-list-item mdui-ripple">
@@ -191,7 +191,7 @@
               </li>
               <li class="mdui-subheader">发现</li>
                 <li class="mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons">usb</i>
+                    <i class="mdui-list-item-icon mdui-icon material-icons">adjust</i>
                     <a class="mdui-list-item-content" href="/binding/index">绑定对方</a>
                 </li>
                 <li class="mdui-subheader">账户</li>
