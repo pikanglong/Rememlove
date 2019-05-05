@@ -10,15 +10,50 @@
     @endif
     <div class="mdui-row mdui-justify-content-center">
         <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4 mdui-col-lg-3 mdui-col-xl-2">
+                <div class="mdui-card">
+                        <div class="mdui-card-content mdui-m-a-1 mdui-p-a-0">
+                            <div class="mdui-btn-group">
+                                <button type="button" class="mdui-btn"><i class="mdui-icon material-icons">add</i></button>
+                                <button type="button" class="mdui-btn"><i class="mdui-icon material-icons">add_location</i></button>
+                            </div>
+                            <div class="mdui-textfield">
+                                <textarea class="mdui-textfield-input" placeholder="今天有什么新鲜事？"></textarea>
+                            </div>
+                        </div>
+                        <div class="mdui-card-media mdui-p-l-1">
+                            <div class="mdui-row-xs-3 mdui-row-sm-4 mdui-row-md-5 mdui-row-lg-6 mdui-row-xl-7 mdui-grid-list">
+                                <div class="mdui-col">
+                                    <div class="mdui-grid-tile" onclick="show();">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mdui-card-actions">
+                            <select class="mdui-select" mdui-select>
+                                <option value="1">对方直接可见</option>
+                                <option value="2">1小时后对方可见</option>
+                                <option value="3">6小时后对方可见</option>
+                                <option value="4">12小时后对方可见</option>
+                                <option value="5">1天后对方可见</option>
+                                <option value="6">私密</option>
+                            </select>
+                        </div>
+                        <button class="mdui-btn mdui-color-theme-accent" onclick="">
+                            <i class="mdui-icon material-icons">image</i>上传图片
+                        </button>
+                        <button class="mdui-fab mdui-float-right mdui-color-theme-accent" onclick="">
+                            <i class="mdui-icon material-icons">check</i>
+                        </button>
+                    </div>
             @foreach ($membox as $m)
             <div class="mdui-card">
                 <div class="mdui-card-header mdui-p-a-1">
                     <img class="mdui-card-header-avatar" src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg"/>
-                    <div class="mdui-card-header-title">User Name</div>
-                    <div class="mdui-card-header-subtitle">2019年5月4日 China <i class="MDI clock"></i>3天后对方可见</div>
+                    <div class="mdui-card-header-title">{{$m -> username}}</div>
+                    <div class="mdui-card-header-subtitle">{{$m -> created_at}}<i class="MDI clock"></i>{{$m -> time_see_remained}}对方可见</div>
                 </div>
                 <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
-                    好！
+                    {{$m -> contents}}
                 </div>
                 <div class="mdui-card-media mdui-p-l-1">
                     <div class="mdui-row">

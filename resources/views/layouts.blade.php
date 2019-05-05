@@ -136,29 +136,36 @@
         @guest
         <a href="/login" class="mdui-btn">登录</a>
         @else
-        <div class="mdui-textfield mdui-textfield-expandable mdui-float-right">
+        {{-- <div class="mdui-textfield mdui-textfield-expandable mdui-float-right">
             <button class="mdui-textfield-icon mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></button>
             <input class="mdui-textfield-input" type="text" placeholder="Search"/>
             <button class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
-        </div>
-        <a href="javascript:;" class="mdui-fab-mini">
-        <avatar style="width:98%">
-            <img src="{{ Auth::user()->avatar }}" alt="avatar">
-        </avatar>
-        </a>
+        </div> --}}
 
-        {{-- TODO
-        添加一个临时的logout
-        后期转移到头像下拉栏中 --}}
-        <a  class="dropdown-item text-danger"
+        <button class="mdui-btn mdui-color-theme-accent" mdui-menu="{target: '#ucenter'}">{{Auth::user()["name"]}}</button>
+
+<ul class="mdui-menu" id="ucenter">
+  <li class="mdui-menu-item">
+        <a href="javascript:;" class="mdui-fab-mini">
+                <avatar style="width:98%">
+                    <img src="{{ Auth::user()->avatar }}" alt="avatar">
+                </avatar>
+                </a>
+  </li>
+  <li class="mdui-divider"></li>
+  <li class="mdui-menu-item">
+        <a  class="mdui-ripple"
         href="{{ route('logout') }}"
         onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">
-        <i class="MDI exit-to-app text-danger"></i> {{ __('Logout') }}
+        <i class="mdui-icon material-icons">exit_to_app</i> 登出
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
+  </li>
+</ul>
+
         @endguest
                 <script>
                     window.addEventListener("load", function () {

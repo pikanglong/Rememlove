@@ -44,6 +44,17 @@
   padding-bottom: 5px !important;
 }
 
+.cardsize {
+  justify-content: center;
+  margin: auto;
+}
+
+@media screen and (min-width: 450px) {
+  .cardsize {
+    width: 25rem;
+  }
+}
+
 .app-pic {
   -o-object-fit: cover;
      object-fit: cover;

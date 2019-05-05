@@ -21,7 +21,14 @@
                     </div>
                     <div class="mdui-typo-display-1 mdui-m-t-3">{{$user->name}}</div>
                     <div class="mdui-typo-body-2-opacity"><br />确认要与之绑定吗? 请慎重决定!</div>
+                    @if(Auth::check())
                     <button id="confirm-invite" class="mdui-center mdui-btn mdui-btn-raised mdui-color-theme mdui-m-a-5">我十分十分十分地确定</button>
+                    @endif
+                    @guest
+                    <div class="mdui-card-actions mdui-typo mdui-text-center card-buttom mdui-p-b-0">
+                        <p>你需要「记恋」账号才能与他绑定 <a href="/register">马上注册</a></p>
+                    </div>
+                    @endguest
                 </div>
                 <div id="confirm-loading" class="mdui-spinner" style="width: 10rem; height: 10rem; display: none;"></div>
                 <div id="confirm-result" style="display: none;">
@@ -33,6 +40,7 @@
                     <div id="error-reason"  class="mdui-typo-display-1-opacity mdui-m-t-3">邀请码已失效</div>
                 </div>
             @endif
+
         </div>
     </div>
     <script>

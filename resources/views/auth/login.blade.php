@@ -3,13 +3,6 @@
 @section('template')
 
 <style>
-    .cardsize{
-        justify-content: center;
-        margin: auto;
-    }
-    @media screen and (min-width: 450px){
-        .cardsize{width: 25rem;}
-    }
     .mdui-textfield-input:focus,
     .mdui-textfield-input:hover {
         border-bottom-width: 2px;
@@ -21,58 +14,6 @@
 
     .alert>p {
         margin-bottom: 0;
-    }
-
-    .card {
-        margin-bottom: 20vh;
-        overflow: hidden;
-        display: block;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 30px;
-        border-radius: 4px;
-        transition: .2s ease-out .0s;
-        color: #7a8e97;
-        background: #fff;
-        position: relative;
-        border: 1px solid rgba(0, 0, 0, 0.15);
-    }
-
-    .card .card-header {
-        padding: 0;
-    }
-
-    .card .card-header>ul {
-        margin: 0;
-    }
-
-    .card .card-header>ul .nav-link {
-        padding: 1rem;
-        border: none!important;
-    }
-
-    .card .card-header .nav-tabs .nav-link.active {
-        color: #ff4081;
-    }
-
-    .nav-tabs-material .nav-tabs-indicator {
-        background-color: #ff4081;
-        bottom: -1px;
-        display: block;
-        width: 50%;
-        height: .15rem;
-        position: absolute;
-        transition: .2s ease-out .0s;
-    }
-
-    #accountTab {
-        position: relative;
-    }
-
-    .card-footer {
-        border: none;
-    }
-
-    .checkbox {
-        margin-top: 1rem;
     }
 
     form {

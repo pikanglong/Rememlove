@@ -13,14 +13,14 @@ class BindingController extends Controller
     public function invite($invite_code){
         $invite = new Invite();
         $users = new Users();
-        $self_id = Auth::user()->id;
+        $self_id = Auth::check() ? Auth::user()->id : 0;
         $user_id = $invite->getUserByCode($invite_code);
         $code_valid = true;
         $has_obeject = false;
         $oneself = $self_id == $user_id;
 
-        if($user_id && !$users->hasObejct($user_id)){
-            if($users->hasObejct($self_id)){
+        if($user_id && !$users->getObject($user_id)){
+            if($users->getObject($self_id)){
                 $has_obeject = true;
             }
         }else{
