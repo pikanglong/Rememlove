@@ -48,6 +48,18 @@ class Membox extends Model
         return $now>$unix_date ? null : "$difference$periods[$j]{$tense}";
     }
 
+    public function insertMembox($data){
+        $binding_id = DB::table('binding') -> where('userA_id', $data -> uid) -> orWhere('userB_id', $data -> uid) -> first() -> id;
+        $id = DB::table('membox') -> insertGetId([
+            'binding_id' => $binding_id,
+            'contents' => $data -> contents,
+            'img' => null,
+            'time_see' => "TODO",
+            'uid' => $data -> uid,
+        ]);
+        return $id;
+    }
+
     // public function public_list(){
 
     // }

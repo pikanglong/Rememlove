@@ -10,7 +10,7 @@
     @endif
     <div class="mdui-row mdui-justify-content-center">
         <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4 mdui-col-lg-3 mdui-col-xl-2">
-                <div class="mdui-card">
+                <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
                         <div class="mdui-card-content mdui-m-a-1 mdui-p-a-0">
                             <div class="mdui-btn-group">
                                 <button type="button" class="mdui-btn"><i class="mdui-icon material-icons">add</i></button>
@@ -46,7 +46,7 @@
                         </button>
                     </div>
             @foreach ($membox as $m)
-            <div class="mdui-card">
+            <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
                 <div class="mdui-card-header mdui-p-a-1">
                     <img class="mdui-card-header-avatar" src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg"/>
                     <div class="mdui-card-header-title">{{$m -> username}}</div>
