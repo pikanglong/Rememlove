@@ -143,7 +143,7 @@
         </div> {{ Auth::user()->avatar }} --}}
                 <a class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-menu="{target: '#ucenter'}">
                     <avatar style="width:100%;height: 100%">
-                        <img src="https://scontent-sin2-2.cdninstagram.com/vp/fbaa80544aa8e7be95668e1344fbb3b4/5D5E6E38/t51.2885-19/s320x320/54732379_639022049871378_1829252946760564736_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="avatar">
+                        <img src="{{ asset(Auth::user()->avatar) }}" alt="avatar">
                     </avatar>
                 </a>
 

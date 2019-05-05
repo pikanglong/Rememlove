@@ -19,6 +19,7 @@ Route::group(['prefix' => 'ajax','namespace' => 'Ajax'], function () {
         Route::post('/newInviteCode', 'BindingController@newInviteCode')->middleware('auth')->name('binding_newInviteCode');
         Route::post('/confirmInvite', 'BindingController@confirmInvite')->middleware('auth')->name('binding_confirmInvite');
         Route::post('/queryCode', 'BindingController@queryCode')->middleware('auth')->name('binding_queryCode');
+        Route::post('/updateavatar', 'AccountController@updateAvatar')->middleware('auth')->name('account_updateAvatar');
     });
 });
 
