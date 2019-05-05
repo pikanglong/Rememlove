@@ -13,7 +13,7 @@ class Membox extends Model
         $membox = DB::table('membox') -> where('binding_id','=',$binding_id) -> where('deleted_at','=',null) -> orderBy('created_at','desc') -> get();
         foreach($membox as $m)
         {
-            $m -> username = DB::table('users') -> where('id','=',$m -> uid) -> first() -> name;
+            $m -> user = DB::table('users') -> where('id','=',$m -> uid) -> first();
             $m -> time_see_remained = $this -> formatTime($m -> time_see);
         }
         return $membox;
