@@ -19,6 +19,15 @@ class Membox extends Model
         return $membox;
     }
 
+    public function getPublicMembox(){
+        $membox = DB::table('membox') -> where('private','=','0') -> where('deleted_at','=',null) -> where('time_see','<',time()) -> orderBy('created_at','desc') -> get();
+        foreach($membox as $m)
+        {
+            $m -> username = DB::table('users') -> where('id','=',$m -> uid) -> first() -> name;
+        }
+        return $membox;
+    }
+
     public function formatTime($date)
     {
         $periods=["秒", "分钟", "小时", "天", "周", "月", "年"];
