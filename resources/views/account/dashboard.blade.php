@@ -4,7 +4,7 @@
     <div class="mdui-container mundb-standard-container">
         <div class="mdui-row mdui-p-a-3">
             <div class="mdui-col-xs-4 mdui-col-sm-3 mdui-col-md-2">
-                <avatar style="width:98%">
+                <avatar style="width:100%;height: 100%">
                     <img src="{{ asset(Auth::user()->avatar) }}" alt="avatar">
                 </avatar>
             </div>
