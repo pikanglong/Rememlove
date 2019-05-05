@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class MenboxTableSeeder extends Seeder
+class MemboxTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
