@@ -57,9 +57,6 @@
     width: 20rem;
     margin-bottom: 2rem;
 }
-.reg-form{
-    margin: 0;
-}
 </style>
 <div class="mdui-container-fluid mundb-standard-container">
     <div class="mdui-row">

@@ -40,7 +40,7 @@ Route::group(['prefix' => 'message'], function () {
     Route::get('/view', 'MessageController@view')->name('message_view');
 });
 
-Route::group(['prefix' => 'binding','middleware' => 'auth'], function () {
+Route::group(['prefix' => 'binding'], function () {
     Route::get('/', 'BindingController@index')->name('binding_index');
     Route::get('/index', 'BindingController@index')->name('binding_index');
     Route::get('/invite', 'BindingController@invite')->name('binding_invite');

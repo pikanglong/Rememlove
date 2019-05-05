@@ -40,8 +40,12 @@
 .card-head {
     padding-bottom: 5px !important;
 }
-.card-body{
-
+.cardsize{
+    justify-content: center;
+    margin: auto;
+}
+@media screen and (min-width: 450px){
+    .cardsize{width: 25rem;}
 }
 .app-pic{
     object-fit: cover;
