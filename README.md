@@ -37,6 +37,7 @@ vim .env
 
 ```
 php artisan migrate
+php artisan storage:link
 ```
 
 8. 记恋's up-and-running, enjoy!
