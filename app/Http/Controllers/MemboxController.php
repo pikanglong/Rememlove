@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Membox;
+use App\Models\Binding;
+use Auth;
 
 class MemboxController extends Controller
 {
@@ -14,9 +17,15 @@ class MemboxController extends Controller
     }
 
     public function index(){
+        $Binding = new Binding();
+        $binding_id = $Binding -> getBindingIdByUid(Auth::user() -> id);
+        $Membox = new Membox();
+        $membox = $Membox -> getMembox($binding_id);
+        // dd($membox);
         return view('membox.index',[
             'page_title' => "时光宝盒",
             'site_title' => "记恋",
+            'membox' => $membox,
         ]);
     }
 
