@@ -10,7 +10,7 @@
     <div class="mdui-row mdui-justify-content-center">
         <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4 mdui-col-lg-3 mdui-col-xl-2">
             <div class="mdui-card">
-                <div class="mdui-card-content mdui-m-t-1 mdui-p-a-0">
+                <div class="mdui-card-content mdui-m-a-1 mdui-p-a-0">
                     <div class="mdui-btn-group">
                         <button type="button" class="mdui-btn"><i class="mdui-icon material-icons">add</i></button>
                         <button type="button" class="mdui-btn"><i class="mdui-icon material-icons">add_location</i></button>
@@ -19,7 +19,6 @@
                         <button type="button" class="mdui-btn"><i class="mdui-icon material-icons">add</i></button>
                         <button type="button" class="mdui-btn"><i class="mdui-icon material-icons">add_location</i></button>
                     </div>
-
                     <div class="mdui-textfield">
                         <textarea class="mdui-textfield-input" placeholder="今天有什么新鲜事？"></textarea>
                     </div>
@@ -43,7 +42,7 @@
                     </select>
                 </div>
                 <button class="mdui-btn mdui-color-theme-accent" onclick="">
-                    <i class="mdui-icon material-icons">check</i>上传图片
+                    <i class="mdui-icon material-icons">image</i>上传图片
                 </button>
                 <button class="mdui-fab mdui-float-right mdui-color-theme-accent" onclick="">
                     <i class="mdui-icon material-icons">check</i>
