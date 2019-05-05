@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Membox extends Model
 {
@@ -22,5 +23,10 @@ class Membox extends Model
 
     public function canViewMem($user_id,$mem_id){
 
+    }
+
+    public function getMembox($binding_id){
+        $membox = DB::table('membox') -> where('binding_id','=',$binding_id) -> get();
+        return $membox;
     }
 }
