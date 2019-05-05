@@ -21,11 +21,22 @@ class CheckinController extends Controller
         }else{
             return redirect()->route('binding_index');
         }
+
+        if(!empty($today_task)){
+            $img = $today_task->img;
+            $img = explode('|',$img);
+            array_pop($img);
+            foreach ($img as &$value) {
+                $value = '/static/img/upload/'.$value;
+            }
+        }
+
         return View('checkin.index',[
             'page_title' => "打卡",
             'site_title' => "记恋",
             'today_task' => $today_task,
-            'binding_id' => $binding_id
+            'binding_id' => $binding_id,
+            'img_list' => $img ?? null,
         ]);
     }
 }

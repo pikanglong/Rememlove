@@ -146,6 +146,7 @@
     }
     let c = new FormData();
     function SelectedImg(file){
+        $('#pic-list').html('');
         for(let f of file){
             new Compressor(f, { //使用compressor.js压缩图片
                 strict: true,

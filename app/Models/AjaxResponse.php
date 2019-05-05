@@ -58,7 +58,10 @@ class AjaxResponse extends Model
 
             //==================checkin
             '5001' => '今天的任务已经分配了哦',
-            '5002' => '请先找到你的Ta吧'
+            '5002' => '请先找到你的Ta吧',
+            '5003' => '上传的文件是无效文件',
+            '5004' => '今天的任务还没有分配哦',
+            '5005' => '慢着...你提交的好像不是你的任务',
 
         ];
         return isset($errDesc[$errCode]) ? $errDesc[$errCode] : $errDesc['1000'];

@@ -24,7 +24,50 @@ class CheckinController extends Controller
     }
 
     public function submit(Request $request){
+        if(!$request->has('binding_id')){
+            return AjaxResponse::err(1001);
+        }
+        $remarks = $request->input('remarks');
+        $binding_id = $request->input('binding_id');
+        $user_id = Auth::user()->id;
 
+        $checkin = new Checkin();
+        $binding = new Binding();
+
+        $binding_id_user = $binding->getBindingIdByUid($user_id);
+        if($binding_id_user != $binding_id){
+            return AjaxResponse::err(5005);
+        }
+
+        $today_task =$checkin->getTodayTask($user_id);
+        if(empty($today_task)){
+            return AjaxResponse::err(5004);
+        }
+
+        $path = '';
+        $valid = false;
+        $pic_list = ['pic_0', 'pic_1', 'pic_2', 'pic_3'];
+        foreach ($pic_list as $value) {
+            if(!empty($request->file($value)) && $request->file($value)->isValid()){
+                $path_temp = $request->file($value)->store('/static/img/upload','web_root');
+                $file_name = explode('/',$path_temp);
+                $file_name = $file_name[count($file_name) - 1];
+                $path .= $file_name.'|';
+                $valid = true;
+            }
+        }
+        if(!$valid){
+            return AjaxResponse::err(5003);
+        }
+
+        $task = Checkin::find($today_task->id);
+        $task->img = $path;
+        $task->complete = true;
+        $task->remarks = $remarks;
+
+        $task->save();
+
+        return AjaxResponse::success(200,null,route('checkin_index'));
     }
 
     public function newTask($mode){
@@ -44,7 +87,7 @@ class CheckinController extends Controller
             return AjaxResponse::err(5002);
         }
 
-        $today_task =$checkin->getTodayTask($user_id);
+        $today_task =$checkin->getTodayTask($binding_id);
         if(!empty($today_task)){
             return AjaxResponse::err(5001);
         }
