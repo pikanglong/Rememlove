@@ -14,11 +14,14 @@
             <div class="mdui-card">
                 <div class="mdui-card-header mdui-p-a-1">
                     <img class="mdui-card-header-avatar" src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg"/>
-                    <div class="mdui-card-header-title">User Name</div>
+                    <div class="mdui-card-header-title">{{$m -> username}}</div>
                     <div class="mdui-card-header-subtitle">2019年5月4日 China <i class="MDI clock"></i>3天后对方可见</div>
                 </div>
                 <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
-                    好！
+                    {{$m -> title}}
+                </div>
+                <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
+                    {{$m -> contents}}
                 </div>
                 <div class="mdui-card-media mdui-p-l-1">
                     <div class="mdui-row">
