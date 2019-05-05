@@ -136,11 +136,11 @@
         @guest
         <a href="/login" class="mdui-btn">登录</a>
         @else
-        <div class="mdui-textfield mdui-textfield-expandable mdui-float-right">
+        {{-- <div class="mdui-textfield mdui-textfield-expandable mdui-float-right">
             <button class="mdui-textfield-icon mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></button>
             <input class="mdui-textfield-input" type="text" placeholder="Search"/>
             <button class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
-        </div>
+        </div> --}}
         <a href="javascript:;" class="mdui-fab-mini">
         <avatar style="width:98%">
             <img src="{{ Auth::user()->avatar }}" alt="avatar">
