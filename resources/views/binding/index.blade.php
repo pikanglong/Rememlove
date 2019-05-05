@@ -1,6 +1,7 @@
 @extends('layouts')
 
 @section('template')
+    @if(!$binding_id)
     <div class="mdui-container mundb-standard-container">
         <div class="mdui-row" style="padding-top: 5rem;">
             <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
@@ -94,34 +95,51 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            </div>
+        <script>
+            window.addEventListener("load",function() {
+                $('#invite-code-form').on('submit',function(e){
+                    e.preventDefault();
+                });
 
-            <script>
-                window.addEventListener("load",function() {
-                    $('#invite-code-form').on('submit',function(e){
-                        e.preventDefault();
-                    });
+                $('#invite-code-display').on('change',function(e){
+                    e.preventDefault();
+                });
 
-                    $('#invite-code-display').on('change',function(e){
-                        e.preventDefault();
-                    });
-
-                    $('#invite-code-new').on('click',function(){
-                        $.ajax({
-                            url : '{{ route("binding_newInviteCode") }}',
-                            type : 'POST',
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success : function(result){
-                                if(result.ret == 200){
-                                    $('#invite-code-display').text(result.data)
-                                }
+                $('#invite-code-new').on('click',function(){
+                    $.ajax({
+                        url : '{{ route("binding_newInviteCode") }}',
+                        type : 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success : function(result){
+                            if(result.ret == 200){
+                                $('#invite-code-display').text(result.data)
                             }
-                        });
+                        }
                     });
-                }, false);
-            </script>
+                });
+            }, false);
+        </script>
     </div>
+    @else
+    <div class="mdui-container mundb-standard-container">
+        <div class="mdui-row mdui-p-a-3">
+            <div class="mdui-col-xs-4 mdui-col-sm-3 mdui-col-md-2">
+                <avatar style="width:98%">
+                    <img src="{{$user->avatar}}" alt="avatar">
+                    <div class="mdui-typo-display-1 mdui-m-t-3">{{$user->name}}</div>
+                </avatar>
+            </div>
+            <div class="mdui-col-xs-4 mdui-col-sm-3 mdui-col-md-2">
+                <avatar style="width:98%">
+                    <img src="{{$user_object->avatar}}" alt="avatar">
+                    <div class="mdui-typo-display-1 mdui-m-t-3">{{$user_object->name}}</div>
+                </avatar>
+            </div>
+        </div>
+    </div>
+    @endif
 @endsection

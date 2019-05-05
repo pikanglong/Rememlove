@@ -13,6 +13,11 @@ class Invite extends Model
         return empty($invite) ? null : $invite->code;
     }
 
+    public function getUserByCode($inviteCode){
+        $invite = static::where('code',$inviteCode)->first();
+        return empty($invite) ? 0 : $invite->user_id;
+    }
+
     public function codeExist($inviteCode){
         return static::where('code',$inviteCode)->count();
     }

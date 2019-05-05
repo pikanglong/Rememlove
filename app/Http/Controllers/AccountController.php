@@ -15,6 +15,7 @@ class AccountController extends Controller
             'site_title' => "记恋",
         ]);
     }
+
     public function getQRCode(){
         $color = Factory::color(['#087', '#431', '#a2d', '#a2b',]);
         // $image = Factory::image(imagecreatefrompng('DavidNineRoc.png'));

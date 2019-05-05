@@ -17,6 +17,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'ajax','namespace' => 'Ajax'], function () {
     Route::group(['prefix' => 'binding'], function () {
         Route::post('/newInviteCode', 'BindingController@newInviteCode')->middleware('auth')->name('binding_newInviteCode');
+        Route::post('/confirmInvite', 'BindingController@confirmInvite')->middleware('auth')->name('binding_confirmInvite');
     });
 });
 
@@ -43,7 +44,7 @@ Route::group(['prefix' => 'message'], function () {
 Route::group(['prefix' => 'binding','middleware' => 'auth'], function () {
     Route::get('/', 'BindingController@index')->name('binding_index');
     Route::get('/index', 'BindingController@index')->name('binding_index');
-    Route::get('/invite', 'BindingController@invite')->name('binding_invite');
+    Route::get('/invite/{invite_code}', 'BindingController@invite')->name('binding_invite');
 });
 
 Route::group(['prefix' => 'account'], function () {
