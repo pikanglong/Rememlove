@@ -14,12 +14,16 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'ajax','namespace' => 'Ajax'], function () {
+Route::group(['prefix' => 'ajax','namespace' => 'Ajax','middleware' => 'auth'], function () {
     Route::group(['prefix' => 'binding'], function () {
-        Route::post('/newInviteCode', 'BindingController@newInviteCode')->middleware('auth')->name('binding_newInviteCode');
-        Route::post('/confirmInvite', 'BindingController@confirmInvite')->middleware('auth')->name('binding_confirmInvite');
-        Route::post('/queryCode', 'BindingController@queryCode')->middleware('auth')->name('binding_queryCode');
-        Route::post('/updateavatar', 'AccountController@updateAvatar')->middleware('auth')->name('account_updateAvatar');
+        Route::post('/newInviteCode', 'BindingController@newInviteCode')->name('binding_newInviteCode');
+        Route::post('/confirmInvite', 'BindingController@confirmInvite')->name('binding_confirmInvite');
+        Route::post('/queryCode', 'BindingController@queryCode')->name('binding_queryCode');
+        Route::post('/updateavatar', 'AccountController@updateAvatar')->name('account_updateAvatar');
+    });
+    Route::group(['prefix' => 'checkin'], function () {
+        Route::post('/newTask/{mode}', 'CheckinController@newTask')->name('check_newTask');
+        Route::post('/submit', 'CheckinController@submit')->name('check_submit');
     });
 });
 
@@ -32,7 +36,7 @@ Route::group(['prefix' => 'membox'], function () {
     Route::get('/create', 'MemboxController@create')->name('membox_create');
 });
 
-Route::group(['prefix' => 'checkin'], function () {
+Route::group(['prefix' => 'checkin','middleware' => 'auth'], function () {
     Route::get('/', 'CheckinController@index')->name('checkin_index');
     Route::get('/index', 'CheckinController@index')->name('checkin_index');
 });

@@ -48,13 +48,18 @@ class AjaxResponse extends Model
             '2001' => "Permission Denied",
             '2002' => "Please Login First",
 
-            '3005' => "Copper", // Reserved for Copper in memory of OASIS and those who contributed a lot
+            '3005' => "Copper", // Reserved for Copper , Don't ask me why , I love copper forever.
 
             //==================binding
             '4001' => '找到你的Ta再困难也不能和自己...哦',
             '4002' => 'Ta已经有对象啦,请不要做第三者',
             '4003' => '邀请码已经失效',
-            '4004' => '你已经有对象了,想让Ta知道你的渣男行为吗'
+            '4004' => '你已经有对象了,想让Ta知道你的渣男行为吗',
+
+            //==================checkin
+            '5001' => '今天的任务已经分配了哦',
+            '5002' => '请先找到你的Ta吧'
+
         ];
         return isset($errDesc[$errCode]) ? $errDesc[$errCode] : $errDesc['1000'];
     }
