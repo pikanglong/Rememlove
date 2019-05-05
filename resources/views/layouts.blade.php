@@ -99,7 +99,7 @@
         }
     </style>
 </head>
-<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-red mdui-theme-accent-pink page">
+<body class="@auth mdui-drawer-body-left @endauth mdui-appbar-with-toolbar mdui-theme-primary-red mdui-theme-accent-pink page">
     <loading>
         <div>
             <div class="lds-ellipsis">
@@ -125,7 +125,9 @@
     </div> --}}
     <header class="mdui-appbar navbar-app mdui-appbar-fixed mdui-appbar-scroll-hide">
         <div class="mdui-toolbar mdui-color-theme">
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}"><i class="mdui-icon material-icons">menu</i></a>
+            @auth
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}"><i class="mdui-icon material-icons">menu</i></a>
+            @endauth
         <a class="mdui-typo-headline" href="/">
             <img src="/static/img/logo.png" height="30"> 记恋
         </a>
@@ -165,8 +167,6 @@
                             });
                         }, false);
                     </script>
-                </li>
-            </ul>
         </div>
     </header>
     @auth

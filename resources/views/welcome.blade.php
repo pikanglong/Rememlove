@@ -53,7 +53,7 @@
     margin-bottom: 2rem;
 }
 .reg-card{
-    margin: auto;
+    justify-content: center;
     width: 20rem;
     margin-bottom: 2rem;
 }
@@ -70,7 +70,7 @@
         </div>
         </div>
         <div class="mdui-col-12 mdui-col-md-6">
-            <div class="mdui-card reg-card justify-content-sm-center animated bounceInRight">
+            <div id="card" class="mdui-card reg-card mdui-center">
                 <div class="mdui-card-header mdui-text-center">
                     <h3>现在就加入吧！</h3>
                 </div>
@@ -122,4 +122,9 @@
         </div>
     </div>
 </div>
+    <script>
+        window.addEventListener("load", function () {
+            $('#card').addClass("animated fadeInDown")
+        })
+    </script>
 @endsection
