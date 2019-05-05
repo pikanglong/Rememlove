@@ -63,7 +63,7 @@
                             $('#confirm-result').show();
                         }else{
                             $('#error-reason').text(result.desc);
-                            $('#error-reason').show();
+                            $('#confirm-error').show();
                         }
                         setTimeout(()=>{
                             window.location = '{{route('binding_index')}}';

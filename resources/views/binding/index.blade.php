@@ -14,25 +14,17 @@
             <span class="mdui-typo-caption-opacity mdui-p-b-1">现在就绑一个开始发粮食吧 : </span>
             <div class="mdui-panel-item">
                 <div class="mdui-panel-item-header">
-                    通过二维码
-                    <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-                </div>
-                <div class="mdui-panel-item-body">
-                    <div class="mdui-row">
-                        <div class="mdui-col-xs-12 mdui-col-sm-2 mdui-col-md-4"></div>
-                        <div class="mdui-col-xs-12 mdui-col-sm-8 mdui-col-md-4">
-                            <button class="mdui-btn mdui-btn-block mdui-color-theme-accent">点击生成二维码</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-panel-item">
-                <div class="mdui-panel-item-header">
                     通过邀请码
                     <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
                 </div>
                 <div class="mdui-panel-item-body">
                     <span class="mdui-typo-caption-opacity">我的邀请码:</span>
+                    <div class="mdui-row">
+                        <div class="mdui-col-xs-12 mdui-col-sm-2 mdui-col-md-4"></div>
+                        <div class="mdui-col-xs-12 mdui-col-sm-8 mdui-col-md-4">
+                            <img src="{{ $invite_QRcode ?? '' }}">
+                        </div>
+                    </div>
                     <div class="mdui-row">
                         <div class="mdui-col-xs-12 mdui-col-sm-2 mdui-col-md-4"></div>
                         <div class="mdui-col-xs-12 mdui-col-sm-8 mdui-col-md-4">
@@ -50,9 +42,10 @@
                     <form id="invite-code-form" method="POST">
                         <div class="mdui-textfield mdui-textfield-floating-label">
                             <label class="mdui-textfield-label">Ta的邀请码</label>
-                            <input class="mdui-textfield-input" type="text" required/>
+                            <input id="invite-code" class="mdui-textfield-input" type="text" required/>
                             <div class="mdui-textfield-error">邀请码不能为空</div>
                         </div>
+
                         <div class="mdui-text-center">
                             <button type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme-accent">提交</button>
                         </div>
@@ -70,7 +63,7 @@
                         <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-col-md-8 mdui-textfield mdui-textfield-floating-label mdui-textfield-not-empty">
                             <label class="mdui-textfield-label">通过邮箱或用户名搜索用户</label>
                             <input class="mdui-textfield-input" id="account-search" type="text">
-                        </div>
+                        </div>-
                     </div>
                     <div class="mdui-row">
                         <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
@@ -101,10 +94,24 @@
             window.addEventListener("load",function() {
                 $('#invite-code-form').on('submit',function(e){
                     e.preventDefault();
-                });
-
-                $('#invite-code-display').on('change',function(e){
-                    e.preventDefault();
+                    var invite_code = $('#invite-code').val();
+                    $.ajax({
+                        url : '{{ route("binding_queryCode") }}',
+                        type : 'POST',
+                        data : {
+                            invite_code : invite_code
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success : function(result){
+                            if(result.ret == 200){
+                                window.location = result.data;
+                            }else{
+                                alert(result.desc);
+                            }
+                        }
+                    });
                 });
 
                 $('#invite-code-new').on('click',function(){

@@ -17,7 +17,7 @@ class AccountController extends Controller
     }
 
     public function getQRCode(){
-        $color = Factory::color(['#087', '#431', '#a2d', '#a2b',]);
+        $color = Factory::color(['#000', '#000', '#000', '#000',]);
         // $image = Factory::image(imagecreatefrompng('DavidNineRoc.png'));
         $id = Auth::id();
         return (new QrCodePlus)
