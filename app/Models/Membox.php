@@ -20,7 +20,8 @@ class Membox extends Model
     }
 
     public function getPublicMembox(){
-        $membox = DB::table('membox') -> where('private','=','0') -> where('deleted_at','=',null) -> where('new_time_see','<',time()) -> orderBy('created_at','desc') -> get();
+        // 本来应该在这里判断设定时间是否超过当前时间的，改为在视图页面判断
+        $membox = DB::table('membox') -> where('private','=','0') -> where('deleted_at','=',null) -> orderBy('created_at','desc') -> get();
         foreach($membox as $m)
         {
             $m -> username = DB::table('users') -> where('id','=',$m -> uid) -> first() -> name;

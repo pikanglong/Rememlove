@@ -45,6 +45,7 @@
                             </button>
                         </div>
                 @foreach ($membox as $m)
+                @if(strtotime($m -> new_time_see) < time() )
                 <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
                     <div class="mdui-card-header mdui-p-a-1">
                         <img class="mdui-card-header-avatar" src="https://pbs.twimg.com/profile_images/1038959697833779201/R3fnbkfD_400x400.jpg"/>
@@ -79,6 +80,7 @@
                         </button>
                     </div>
                 </div>
+                @endif
                 @endforeach
             </div>
         </div>
