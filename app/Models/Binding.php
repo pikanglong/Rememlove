@@ -10,8 +10,6 @@ class Binding extends Model
 
     public function getBindingIdByUid($uid){
         $binding = static::where('userA_id', $uid)->orWhere('userB_id', $uid)->first();
-        return empty($binding) ? 0 : $binding->id;
+        return empty($binding) ? null : $binding->id;
     }
-
-
 }
