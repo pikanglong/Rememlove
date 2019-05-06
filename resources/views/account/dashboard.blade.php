@@ -16,6 +16,18 @@
                 <button class="mdui-btn mdui-btn-raised mdui-color-theme-accent" onclick="$('#avatar_upload').click();">上传头像
                 </button>
             </div>
+            @if($halfuid)
+            <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3" style="text-align: right">
+                <div class="mdui-typo-display-1">{{ $halfdetail -> name }}</div>
+                <br>
+                <div class="mdui-typo-title"><strong>1</strong> 回忆 <strong>111</strong> 喜欢 <strong>111</strong> 评论</div>
+            </div>
+            <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3">
+                <avatar style="width:10rem;height:10rem;">
+                        <img src="{{ asset($halfdetail->avatar) }}" class="mdui-img-circle" alt="avatar">
+                </avatar>
+            </div>
+            @else
             <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3" style="text-align: right">
                 <div class="mdui-typo-headline">还没有配对TA呢</div>
                 <br>
@@ -26,6 +38,7 @@
                     <img class="mdui-img-circle" src="https://scontent-sin2-2.cdninstagram.com/vp/fbaa80544aa8e7be95668e1344fbb3b4/5D5E6E38/t51.2885-19/s320x320/54732379_639022049871378_1829252946760564736_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="avatar">
                 </avatar>
             </div>
+            @endif
         </div>
         <div class="mdui-tab mdui-tab-centered" mdui-tab>
             <a href="#mem-tab" class="mdui-ripple mdui-ripple-white">

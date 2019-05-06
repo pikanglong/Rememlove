@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Binding;
+use DB;
 
 class Users extends Model
 {
@@ -30,6 +31,16 @@ class Users extends Model
             return ($binding->userA_id == $uid) ? static::find($binding->userB_id) : static::find($binding->userA_id);
         }else{
             return null;
+        }
+    }
+
+    public function getDetail($uid){
+        $detail = DB::table('users') -> where('id','=',$uid) ->first();
+        if(empty($detail)){
+            return null;
+        }
+        else{
+            return $detail;
         }
     }
 

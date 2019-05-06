@@ -6,13 +6,21 @@ use DavidNineRoc\Qrcode\Factory;
 use DavidNineRoc\Qrcode\QrCodePlus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Binding;
+use App\Models\Users;
 
 class AccountController extends Controller
 {
     public function dashboard(){
+        $Binding = new Binding();
+        $halfuid = $Binding -> getTheOtherHalfUid(Auth::user()->id);
+        $Users = new Users();
+        $halfdetail = $Users -> getDetail($halfuid);
         return view('account.dashboard',[
             'page_title' => "用户",
             'site_title' => "记恋",
+            'halfuid' => $halfuid,
+            'halfdetail' => $halfdetail,
         ]);
     }
 
