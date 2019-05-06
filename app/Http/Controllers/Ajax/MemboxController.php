@@ -18,7 +18,7 @@ class MemboxController extends Controller
         if(!isset($bid)){
             return AjaxResponse::err(8000);
         }
-        $time = $request->input('time');
+        $time = intval($request->input('time'));
         $text = $request->input('text');
         $password = $request->input('password');
         $password_tip = $request->input('password-tip');
@@ -51,9 +51,25 @@ class MemboxController extends Controller
         $mem->password = $password;
         $mem->tips = $password_tip;
         $mem->binding_id = $bid;
-        $mem->private =0;
-        $mem->new_time_see = Date('Y-m-d');
         $mem->time_see = Date('Y-m-d');
+        $mem->private =1;
+        if ($time == 0){
+            $mem->private =0;
+            $mem->new_time_see = Date('Y-m-d H:i:s');
+        }elseif ($time == 1){
+            $mem->new_time_see = Date('Y-m-d H:i:s',time());
+        }elseif ($time == 2){
+            $mem->new_time_see = Date('Y-m-d H:i:s',time() + 3600);
+        }elseif ($time == 3){
+            $mem->new_time_see = Date('Y-m-d H:i:s',time() + 6*3600);
+        }elseif ($time == 4){
+            $mem->new_time_see = Date('Y-m-d H:i:s',time() + 12*3600);
+        }elseif ($time == 5){
+            $mem->new_time_see = Date('Y-m-d H:i:s',time() + 24*3600);
+        }elseif ($time == 6){
+            $mem->new_time_see = Date('Y-m-d H:i:s',time() + 360 * 24 * 3600);
+        }
+
         $mem->share_link = "";
         $mem->save();
 
