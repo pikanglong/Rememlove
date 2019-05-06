@@ -26,19 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
-            return redirect("/membox/square");
-            $Binding = new Binding();
-            $binding_id = $Binding -> getBindingIdByUid(Auth::user() -> id);
-            $Membox = new Membox();
-            $membox = $Membox -> getMembox($binding_id);
-            return view('home',[
-                'page_title'=>"主页",
-                'site_title'=>"记恋",
-                'membox' => $membox,
-            ]);
-        }
-        else return view('welcome',[
+        return Auth::check() ? redirect("/membox/square") :
+        view('welcome',[
             'page_title' => "欢迎",
             'site_title' => "记恋",
         ]);
