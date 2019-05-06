@@ -179,6 +179,9 @@
                 success : function(result){
                     mdui.alert("发布成功。", function(){
                         console.log(result);
+                        setTimeout(function(){
+                            window.location.reload();
+                        },100); // 跳转前等待
                     });
 
                 }
