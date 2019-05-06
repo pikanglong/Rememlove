@@ -102,8 +102,8 @@
                         </div> --}}
                         {{-- <button class="mdui-btn mdui-btn-icon mdui-float-right mdui-color-theme" onclick="show();">
                             <i class="mdui-icon material-icons">chevron_right</i>
-                        </button>
-                    </div> --}}
+                        </button> --}}
+                    </div>
                 </div>
                 @endif
             </div>
