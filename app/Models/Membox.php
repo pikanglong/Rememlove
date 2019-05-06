@@ -9,6 +9,18 @@ class Membox extends Model
 {
     protected $table = 'membox';
 
+    public function getshare($sharelink){
+        $membox = DB::table('membox') -> where('share_link','=',$sharelink) -> where('deleted_at','=',null) -> first();
+        if (!empty($membox)){
+            $membox -> user = DB::table('users') -> where('id','=',$membox -> uid) -> first();
+            $membox -> time_see_remained = $this -> formatTime($membox -> new_time_see);
+            $pic = explode('|',$membox->img);
+            $membox -> pic_count = intval($pic[0]);
+            $membox -> pic = array_slice($pic, 1);
+        }
+        return $membox;
+    }
+
     public function getMembox($binding_id){
         $membox = DB::table('membox') -> where('binding_id','=',$binding_id) -> where('deleted_at','=',null) -> orderBy('created_at','desc') -> get();
         foreach($membox as $m)
