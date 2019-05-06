@@ -86,6 +86,11 @@ class Membox extends Model
         return $id;
     }
 
+    public function countMembox($uid){
+        $count = DB::table('membox') -> where('uid','=',$uid) -> count('id');
+        return $count;
+    }
+
     // public function public_list(){
 
     // }

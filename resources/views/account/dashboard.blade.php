@@ -11,16 +11,13 @@
             <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3">
                 <div class="mdui-typo-display-1">{{ Auth::user()->name }}</div>
                 <br>
-                <div class="mdui-typo-title"><strong>1</strong> 回忆 <strong>111</strong> 喜欢 <strong>111</strong> 评论</div>
-                <input type="file" style="display: none;" id="avatar_upload" accept="image/*" ref="input" onchange="SelectedImg(this.files[0])">
-                <button class="mdui-btn mdui-btn-raised mdui-color-theme-accent" onclick="$('#avatar_upload').click();">上传头像
-                </button>
+            <div class="mdui-typo-title"><strong>{{$mymemboxcount}}</strong> 回忆 <strong>111</strong> 喜欢</div>
             </div>
             @if($halfuid)
             <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3" style="text-align: right">
                 <div class="mdui-typo-display-1">{{ $halfdetail -> name }}</div>
                 <br>
-                <div class="mdui-typo-title"><strong>1</strong> 回忆 <strong>111</strong> 喜欢 <strong>111</strong> 评论</div>
+                <div class="mdui-typo-title"><strong>{{$halfmemboxcount}}</strong> 回忆 <strong>111</strong> 喜欢</div>
             </div>
             <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3">
                 <avatar style="width:10rem;height:10rem;">
@@ -31,7 +28,6 @@
             <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3" style="text-align: right">
                 <div class="mdui-typo-headline">还没有配对TA呢</div>
                 <br>
-                <div class="mdui-typo-title"><strong>0</strong> 回忆</div>
             </div>
             <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3">
                 <avatar style="width:10rem;height:10rem;">
@@ -39,24 +35,11 @@
                 </avatar>
             </div>
             @endif
+            <div>
+                <input type="file" style="display: none;" id="avatar_upload" accept="image/*" ref="input" onchange="SelectedImg(this.files[0])">
+                <button class="mdui-btn mdui-btn-raised mdui-color-theme-accent" onclick="$('#avatar_upload').click();">上传头像</button>
+            </div>
         </div>
-        <div class="mdui-tab mdui-tab-centered" mdui-tab>
-            <a href="#mem-tab" class="mdui-ripple mdui-ripple-white">
-                <i class="mdui-icon material-icons">book</i>
-                <label>回忆</label>
-            </a>
-            <a href="#like-tab" class="mdui-ripple mdui-ripple-white">
-                <i class="mdui-icon material-icons">favorite</i>
-                <label>喜欢</label>
-            </a>
-            <a href="#comment-tab" class="mdui-ripple mdui-ripple-white">
-                <i class="mdui-icon material-icons">comment</i>
-                <label>评论</label>
-            </a>
-        </div>
-        <div id="mem-tab" class="mdui-p-a-2">web content</div>
-        <div id="like-tab" class="mdui-p-a-2">shopping content</div>
-        <div id="comment-tab" class="mdui-p-a-2">images content</div>
     </div>
     <script>
         function SelectedImg(file){
