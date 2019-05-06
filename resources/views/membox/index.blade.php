@@ -118,73 +118,104 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.0.5/dist/compressor.min.js"></script>
 <script>
-        function show(url){
-            $('#fullview').removeClass('hide');
-            $('#fullview').addClass('showdiv');
-            $('#pic_view').removeClass('hide');
-            $('#pic_view').addClass('showdiv2');
-            $('#big_pic_view').attr("src",url);
+    function smoothscroll(){
+        let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        if (currentScroll > 0) {
+            window.requestAnimationFrame(smoothscroll);
+            window.scrollTo (0,currentScroll - (currentScroll/5));
         }
-        function hide_pic_view(){
-            $('#fullview').removeClass('showdiv');
-            $('#fullview').addClass('hide');
-            $('#pic_view').addClass('hide');
-            $('#pic_view').removeClass('showdiv2');
-        }
-        const c = new FormData();
-        let count = 0;
-        function SelectedImg(file){
-            $('#pic-list').html('');
-            for(let f of file){
-                new Compressor(f, { //使用compressor.js压缩图片
-                    strict: true,
-                    checkOrientation: true,
-                    maxWidth: 3000,
-                    maxHeight: 3000,
-                    quality: 0.8,
-                    success(result) {
-                        let piclink = URL.createObjectURL(result);
-                        let format = "<div class=\"mdui-col\">\n" +
-                            "                            <div class=\"mdui-grid-tile\">\n" +
-                            "                                <img class=\"app-pic mdui-img-fluid mdui-img-rounded\" src=\"" + piclink + "\" alt=\"\">\n" +
-                            "                            </div>\n" +
-                            "                        </div>";
-                        $('#pic-list').append(format);
-                        c.set('pic-'+ count, result, result.name); //设置本地压缩后的图片
-                        count++;
-                        console.log(c);
-                    },
-                    error(err) {
-                        console.log(err.message);
-                    },
-                });
-            }
-        }
-        function submitmem(){
-            c.set('time',$('#time-view option:selected').index());
-            c.set('text',$('#mem-text').val());
-            c.set('password',$('#mem-pass').val());
-            c.set('password-tip',$('#mem-pass-tip').val());
-            c.set('pic-count', count);
-            $.ajax({
-                contentType: false,
-                processData: false,
-                url : '{{ route("membox_new") }}',
-                type : 'POST',
-                data: c,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    function show(url){
+        $('#fullview').removeClass('hide');
+        $('#fullview').addClass('showdiv');
+        $('#pic_view').removeClass('hide');
+        $('#pic_view').addClass('showdiv2');
+        $('#big_pic_view').attr("src",url);
+    }
+    function hide_pic_view(){
+        $('#fullview').removeClass('showdiv');
+        $('#fullview').addClass('hide');
+        $('#pic_view').addClass('hide');
+        $('#pic_view').removeClass('showdiv2');
+    }
+    const c = new FormData();
+    let count = 0;
+    function SelectedImg(file){
+        $('#pic-list').html('');
+        for(let f of file){
+            new Compressor(f, { //使用compressor.js压缩图片
+                strict: true,
+                checkOrientation: true,
+                maxWidth: 3000,
+                maxHeight: 3000,
+                quality: 0.8,
+                success(result) {
+                    let piclink = URL.createObjectURL(result);
+                    let format = "<div class=\"mdui-col\">\n" +
+                        "                            <div class=\"mdui-grid-tile\">\n" +
+                        "                                <img class=\"app-pic mdui-img-fluid mdui-img-rounded\" src=\"" + piclink + "\" alt=\"\">\n" +
+                        "                            </div>\n" +
+                        "                        </div>";
+                    $('#pic-list').append(format);
+                    c.set('pic-'+ count, result, result.name); //设置本地压缩后的图片
+                    count++;
+                    console.log(c);
                 },
-                success : function(result){
+                error(err) {
+                    console.log(err.message);
+                },
+            });
+        }
+    }
+    function submitmem(){
+        c.set('time',$('#time-view option:selected').index());
+        c.set('text',$('#mem-text').val());
+        c.set('password',$('#mem-pass').val());
+        c.set('password-tip',$('#mem-pass-tip').val());
+        c.set('pic-count', count);
+        $.ajax({
+            contentType: false,
+            processData: false,
+            url : '{{ route("membox_new") }}',
+            type : 'POST',
+            data: c,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success : function(result){
+                if(result.ret === 200){
                     mdui.alert("发布成功。", function(){
+                        window.location.reload();
                         console.log(result);
                         setTimeout(function(){
                             window.location.reload();
                         },100); // 跳转前等待
                     });
-
+                }else{
+                    mdui.alert(result.desc, function(){
+                        console.log(result);
+                    });
                 }
-            });
-        }
-    </script>
+            }
+        });
+    }
+    function share(mid){
+        $.ajax({
+            url : '{{ route("share_post") }}',
+            type : 'POST',
+            data: {mid:mid},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success : function(result){
+                if (result.ret == 200)
+                    $('#share-'+mid).addClass('mdui-color-teal');
+                mdui.alert("现在可以把<br><strong>{{asset('share')}}/" + result.desc + "</strong><br>分享给小伙伴们查看了。","成功分享", function(){
+
+                });
+
+            }
+        });
+    }
+</script>
 @endsection
