@@ -193,10 +193,15 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success : function(result){
-                mdui.alert("发布成功。", function(){
-                    console.log(result);
-                });
-
+                if(result.ret === 200){
+                    mdui.alert("发布成功。", function(){
+                        console.log(result);
+                    });
+                }else{
+                    mdui.alert(result.desc, function(){
+                        console.log(result);
+                    });
+                }
             }
         });
     }

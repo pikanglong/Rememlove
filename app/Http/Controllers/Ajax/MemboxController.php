@@ -12,6 +12,12 @@ use Auth;
 class MemboxController extends Controller
 {
     public function newpost(Request $request){
+        $uid = Auth::user()->id;
+        $binding = new Binding();
+        $bid = $binding->getBindingIdByUid($uid);
+        if(!isset($bid)){
+            return AjaxResponse::err(8000);
+        }
         $time = $request->input('time');
         $text = $request->input('text');
         $password = $request->input('password');
@@ -37,15 +43,14 @@ class MemboxController extends Controller
             return AjaxResponse::err(5003);
         }
         $mem = new Membox;
-        $uid = Auth::user()->id;
+
         $mem->uid = $uid;
         $mem->title = "";
         $mem->contents = $text;
         $mem->img = $path;
         $mem->password = $password;
         $mem->tips = $password_tip;
-        $binding = new Binding();
-        $mem->binding_id = $binding->getBindingIdByUid($uid);
+        $mem->binding_id = $bid;
         $mem->private =0;
         $mem->new_time_see = Date('Y-m-d');
         $mem->time_see = Date('Y-m-d');

@@ -15,7 +15,7 @@
                 @endforeach
             @else
                 <p class="mdui-text-center">没有未读消息哦</p>
-                
+
             @endif
         </ul>
     </div>
