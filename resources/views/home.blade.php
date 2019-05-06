@@ -96,17 +96,14 @@
                     </div>
                     @endif
                     <div class="mdui-card-actions card-buttom">
-                        <div class="mdui-chip">
-                            <span class="mdui-chip-icon mdui-color-pink"><i class="MDI heart"></i></span>
-                            <span class="mdui-chip-title">喜欢</span>
-                        </div>
+{{--                        <div class="mdui-chip">--}}
+{{--                            <span class="mdui-chip-icon mdui-color-pink"><i class="MDI heart"></i></span>--}}
+{{--                            <span class="mdui-chip-title">喜欢</span>--}}
+{{--                        </div>--}}
                         <div class="mdui-chip" onclick="share({{$m->id}});">
                             <span id="share-{{$m->id}}" class="mdui-chip-icon @if($m->share_link != '') mdui-color-teal @endif "><i class="MDI share"></i></span>
                             <span class="mdui-chip-title">分享</span>
                         </div>
-                        <button class="mdui-btn mdui-btn-icon mdui-float-right mdui-color-theme" onclick="show();">
-                            <i class="mdui-icon material-icons">chevron_right</i>
-                        </button>
                     </div>
                 </div>
         </div>
@@ -115,8 +112,8 @@
     </div>
 
 <div class="mdui-fab-wrapper" id="exampleFab" mdui-fab="{trigger: 'hover'}">
-        <button class="mdui-fab mdui-ripple mdui-color-theme-accent">
-          <i class="mdui-icon material-icons">up</i>
+        <button class="mdui-fab mdui-ripple mdui-color-theme-accent" onclick="smoothscroll()">
+            <i class="mdui-icon material-icons">arrow_upward</i>
         </button>
 </div>
         <div id="pic_view" class="hide">
@@ -127,6 +124,13 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.0.5/dist/compressor.min.js"></script>
 <script>
+    function smoothscroll(){
+        let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        if (currentScroll > 0) {
+            window.requestAnimationFrame(smoothscroll);
+            window.scrollTo (0,currentScroll - (currentScroll/5));
+        }
+    }
     function show(url){
         $('#fullview').removeClass('hide');
         $('#fullview').addClass('showdiv');
