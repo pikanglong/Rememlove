@@ -10,27 +10,33 @@ use Auth;
 class MemboxController extends Controller
 {
     public function square(){
-        $Membox = new Membox();
-        $membox = $Membox -> getPublicMembox();
-        // dd($membox);
-        return view('membox.square',[
-            'page_title' => "广场",
-            'site_title' => "记恋",
-            'membox' => $membox,
-        ]);
+        if(Auth::check()){
+            $Membox = new Membox();
+            $membox = $Membox -> getPublicMembox();
+            // dd($membox);
+            return view('membox.square',[
+                'page_title' => "广场",
+                'site_title' => "记恋",
+                'membox' => $membox,
+            ]);
+        }
+        else return redirect()->route('login');
     }
 
     public function index(){
-        $Binding = new Binding();
-        $binding_id = $Binding -> getBindingIdByUid(Auth::user() -> id);
-        $Membox = new Membox();
-        $membox = $Membox -> getMembox($binding_id);
-        // dd($membox);
-        return view('membox.index',[
-            'page_title' => "时光宝盒",
-            'site_title' => "记恋",
-            'membox' => $membox,
-        ]);
+        if(Auth::check()){
+            $Binding = new Binding();
+            $binding_id = $Binding -> getBindingIdByUid(Auth::user() -> id);
+            $Membox = new Membox();
+            $membox = $Membox -> getMembox($binding_id);
+            // dd($membox);
+            return view('membox.index',[
+                'page_title' => "时光宝盒",
+                'site_title' => "记恋",
+                'membox' => $membox,
+            ]);
+        }
+        else return redirect()->route('login');
     }
 
     public function view(){
