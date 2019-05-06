@@ -68,7 +68,7 @@ class AjaxResponse extends Model
             //==================message
             '6001' => '不能偷看别人的消息',
             '6002' => '指定的消息不存在',
-
+            '7000' => ' 已经分享过了',
         ];
         return isset($errDesc[$errCode]) ? $errDesc[$errCode] : $errDesc['1000'];
     }
