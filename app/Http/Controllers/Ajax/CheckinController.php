@@ -70,7 +70,7 @@ class CheckinController extends Controller
         return AjaxResponse::success(200,null,route('checkin_index'));
     }
 
-    public function newTask($mode){
+    public function newTask($mode,Request $request){
         if($mode == 'spec'){
             $task_spec = $request->input('want_to_do');
             if(empty($task_spec)){
