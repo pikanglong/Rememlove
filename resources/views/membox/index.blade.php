@@ -115,6 +115,7 @@
         @endforeach
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/compressorjs@1.0.5/dist/compressor.min.js"></script>
 <script>
         function show(url){
             $('#fullview').removeClass('hide');
