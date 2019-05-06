@@ -72,7 +72,7 @@
                 @if(strtotime($m -> new_time_see) < time() )
                 <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
                     <div class="mdui-card-header mdui-p-a-1">
-                        <img class="mdui-card-header-avatar" src=""/>
+                        <img class="mdui-card-header-avatar" src="{{asset($m->user->avatar)}}"/>
                         <div class="mdui-card-header-title">{{$m -> username}}</div>
                         <div class="mdui-card-header-subtitle">{{$m -> created_at}}</div>
                     </div>
