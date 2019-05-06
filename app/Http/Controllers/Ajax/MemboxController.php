@@ -54,4 +54,24 @@ class MemboxController extends Controller
 
         return AjaxResponse::success();
     }
+
+    public function share(Request $request){
+        $mid = $request->input('mid');
+        $mem =Membox::find($mid);
+        if ($mem->uid != Auth::user()->id){
+            return AjaxResponse::err(2000);
+        }
+        if ($mem -> share_link !== ""){
+            return AjaxResponse::success(201,$mem -> share_link);
+        }
+        $chars='abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789';
+
+        $code='';
+        for ($i=0; $i<16; $i++) {
+            $code.=$chars[mt_rand(0, strlen($chars)-1)];
+        }
+        $mem -> share_link = $code;
+        $mem->save();
+        return AjaxResponse::success(200,$code);
+    }
 }

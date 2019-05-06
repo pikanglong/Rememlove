@@ -100,8 +100,8 @@
                             <span class="mdui-chip-icon"><i class="MDI heart"></i></span>
                             <span class="mdui-chip-title">喜欢</span>
                         </div>
-                        <div class="mdui-chip">
-                            <span class="mdui-chip-icon"><i class="MDI share"></i></span>
+                        <div class="mdui-chip" onclick="share({{$m->id}});">
+                            <span id="share-{{$m->id}}" class="mdui-chip-icon @if($m->share_link != '') mdui-color-teal @endif "><i class="MDI share"></i></span>
                             <span class="mdui-chip-title">分享</span>
                         </div>
                         <button class="mdui-btn mdui-btn-icon mdui-float-right mdui-color-theme" onclick="show();">
@@ -116,20 +116,8 @@
 
 <div class="mdui-fab-wrapper" id="exampleFab" mdui-fab="{trigger: 'hover'}">
         <button class="mdui-fab mdui-ripple mdui-color-theme-accent">
-          <!-- 默认显示的图标 -->
-          <i class="mdui-icon material-icons">add</i>
-
-          <!-- 在拨号菜单开始打开时，平滑切换到该图标，若不需要切换图标，则可以省略该元素 -->
-          <i class="mdui-icon mdui-fab-opened material-icons">add</i>
+          <i class="mdui-icon material-icons">up</i>
         </button>
-        <div class="mdui-fab-dial">
-            <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink">
-                <i class="mdui-icon material-icons">fiber_new</i>
-            </button>
-          <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red"><i class="mdui-icon material-icons">bookmark</i></button>
-          <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-orange"><i class="mdui-icon material-icons">access_alarms</i></button>
-          <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-blue"><i class="mdui-icon material-icons">touch_app</i></button>
-        </div>
 </div>
         <div id="pic_view" class="hide">
             <button class="mdui-btn mdui-btn-icon mdui-float-left mdui-color-theme" onclick="hide_pic_view();">
@@ -199,6 +187,24 @@
             success : function(result){
                 mdui.alert("发布成功。", function(){
                     console.log(result);
+                });
+
+            }
+        });
+    }
+    function share(mid){
+        $.ajax({
+            url : '{{ route("share_post") }}',
+            type : 'POST',
+            data: {mid:mid},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success : function(result){
+                if (result.ret == 200)
+                    $('#share-'+mid).addClass('mdui-color-teal');
+                mdui.alert("现在可以把<br><strong>{{asset('share')}}/" + result.desc + "</strong><br>分享给小伙伴们们查看了。","成功分享", function(){
+
                 });
 
             }

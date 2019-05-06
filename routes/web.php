@@ -35,6 +35,7 @@ Route::group(['prefix' => 'ajax','namespace' => 'Ajax','middleware' => 'auth'], 
     });
     Route::group(['prefix' => 'membox'], function () {
         Route::post('/new', 'MemboxController@newpost')->name('membox_new');
+        Route::post('/share', 'MemboxController@share')->name('share_post');
     });
 });
 
