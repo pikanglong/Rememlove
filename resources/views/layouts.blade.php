@@ -9,6 +9,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="manifest" href="/manifest.json" />
     <link rel="alternate icon" type="image/png" href="/favicon.png">
     <style>
         loading>div {
@@ -112,17 +113,10 @@
         </div>
     </loading>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="/static/fonts/Roboto/roboto.css">
-    <link rel="stylesheet" href="/static/fonts/Montserrat/montserrat.css">
-    {{-- <link rel="stylesheet" href="/static/css/bootstrap-material-design.min.css"> --}}
-    {{-- <link rel="stylesheet" href="/static/css/wemd-color-scheme.css"> --}}
     <link rel="stylesheet" href="/static/css/animate.min.css">
     <link rel="stylesheet" href="/static/mdui/css/mdui.min.css">
     <link rel="stylesheet" href="/static/fonts/MDI-WXSS/MDI.css">
     <link rel="stylesheet" href="/static/fonts/Devicon/devicon.css">
-    {{-- <div class="mundb-background-container">
-        <img src="">
-    </div> --}}
     <header class="mdui-appbar navbar-app mdui-appbar-fixed mdui-appbar-scroll-hide">
         <div class="mdui-toolbar mdui-color-theme">
             @auth
@@ -203,10 +197,6 @@
               <li class="mdui-list-item mdui-ripple">
                 <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
                 <a class="mdui-list-item-content" href="/account/dashboard">我</a>
-              </li>
-              <li class="mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons">info</i>
-                <a class="mdui-list-item-content" href="/about">关于</a>
               </li>
             </ul>
     </div>

@@ -7,7 +7,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <div class="mdui-row mdui-justify-content-center">
+    <div class="mdui-row mdui-center">
         <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4 mdui-col-lg-3 mdui-col-xl-2">
             <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
                 <div class="mdui-card-content mdui-m-a-1 mdui-p-a-0">
@@ -99,10 +99,6 @@
                         <div class="mdui-chip">
                             <span class="mdui-chip-icon"><i class="MDI heart"></i></span>
                             <span class="mdui-chip-title">喜欢</span>
-                        </div>
-                        <div class="mdui-chip">
-                            <span class="mdui-chip-icon"><i class="MDI comment"></i></span>
-                            <span class="mdui-chip-title">评论</span>
                         </div>
                         <div class="mdui-chip">
                             <span class="mdui-chip-icon"><i class="MDI share"></i></span>

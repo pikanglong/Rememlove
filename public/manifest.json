@@ -1,0 +1,14 @@
+{
+  "name": "记恋",
+  "description": "记恋 App",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#F44336",
+  "background_color": "#F44336",
+  "icons": [
+    {
+    "src": "favicon.ico",
+    "sizes": "48x48"
+  }
+  ]
+}

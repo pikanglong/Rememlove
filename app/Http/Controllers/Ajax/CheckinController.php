@@ -39,7 +39,7 @@ class CheckinController extends Controller
             return AjaxResponse::err(5005);
         }
 
-        $today_task =$checkin->getTodayTask($user_id);
+        $today_task =$checkin->getTodayTask($binding_id);
         if(empty($today_task)){
             return AjaxResponse::err(5004);
         }
@@ -62,9 +62,8 @@ class CheckinController extends Controller
 
         $task = Checkin::find($today_task->id);
         $task->img = $path;
-        $task->complete = true;
-        $task->remarks = $remarks;
-
+        $task->complete = 1;
+        $task->remarks = empty($remarks) ? 'Ta们很懒惰,什么都没说' : $remarks;
         $task->save();
 
         return AjaxResponse::success(200,null,route('checkin_index'));
