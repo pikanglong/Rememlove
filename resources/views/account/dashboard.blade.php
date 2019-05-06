@@ -31,7 +31,7 @@
             </div>
             <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3 mdui-text-right">
                 <avatar style="width:10rem;height:10rem;">
-                    <img class="mdui-img-circle" src="https://scontent-sin2-2.cdninstagram.com/vp/fbaa80544aa8e7be95668e1344fbb3b4/5D5E6E38/t51.2885-19/s320x320/54732379_639022049871378_1829252946760564736_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="avatar">
+                    <img class="mdui-img-circle" src="{{asset('static/img/avatar/default.png')}}" alt="avatar">
                 </avatar>
             </div>
             @endif
