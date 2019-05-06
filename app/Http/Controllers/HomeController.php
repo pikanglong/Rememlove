@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()){
+            return redirect("/membox/square");
             $Binding = new Binding();
             $binding_id = $Binding -> getBindingIdByUid(Auth::user() -> id);
             $Membox = new Membox();
