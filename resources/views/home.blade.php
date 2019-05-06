@@ -195,6 +195,9 @@
                 if(result.ret === 200){
                     mdui.alert("发布成功。", function(){
                         console.log(result);
+                        setTimeout(function(){
+                            window.location.reload();
+                        },1000); // 跳转前等待
                     });
                 }else{
                     mdui.alert(result.desc, function(){
