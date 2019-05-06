@@ -41,6 +41,9 @@ class Membox extends Model
         {
             $m -> user = DB::table('users') -> where('id','=',$m -> uid) -> first();
             $m -> username = DB::table('users') -> where('id','=',$m -> uid) -> first() -> name;
+            $pic = explode('|',$m->img);
+            $m -> pic_count = intval($pic[0]);
+            $m -> pic = array_slice($pic, 1);
         }
         return $membox;
     }

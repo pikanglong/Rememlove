@@ -97,7 +97,7 @@
                     @endif
                     <div class="mdui-card-actions card-buttom">
                         <div class="mdui-chip">
-                            <span class="mdui-chip-icon"><i class="MDI heart"></i></span>
+                            <span class="mdui-chip-icon mdui-color-pink"><i class="MDI heart"></i></span>
                             <span class="mdui-chip-title">喜欢</span>
                         </div>
                         <div class="mdui-chip">

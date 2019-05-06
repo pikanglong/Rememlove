@@ -84,13 +84,17 @@
                 <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
                     {{$m -> contents}}
                 </div>
-                <div class="mdui-card-media mdui-p-l-1">
+                @if($m->pic_count > 0)
+                <div class="mdui-card-media mdui-p-l-1 mdui-m-b-3 mdui-p-r-1">
                     <div class="mdui-row">
-                        <div class="mdui-col-sm-4 mdui-p-a-1" onclick="show();">
-                            <img class="app-pic mdui-img-fluid mdui-img-rounded" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
+                        @foreach($m->pic as $p)
+                        <div class="mdui-col-sm-4 mdui-p-a-1" onclick="show('{{asset('static/img/membox/'.$p) }}');">
+                            <img class="app-pic mdui-img-fluid mdui-img-rounded" src="{{asset('static/img/membox/'.$p) }}" alt="">
                         </div>
+                        @endforeach
                     </div>
                 </div>
+                @endif
                 <div class="mdui-card-actions card-buttom">
                     <div class="mdui-chip">
                         <span class="mdui-chip-icon"><i class="MDI heart"></i></span>
@@ -114,5 +118,71 @@
         @endforeach
     </div>
 </div>
+<script>
+        function show(url){
+            $('#fullview').removeClass('hide');
+            $('#fullview').addClass('showdiv');
+            $('#pic_view').removeClass('hide');
+            $('#pic_view').addClass('showdiv2');
+            $('#big_pic_view').attr("src",url);
+        }
+        function hide_pic_view(){
+            $('#fullview').removeClass('showdiv');
+            $('#fullview').addClass('hide');
+            $('#pic_view').addClass('hide');
+            $('#pic_view').removeClass('showdiv2');
+        }
+        const c = new FormData();
+        let count = 0;
+        function SelectedImg(file){
+            $('#pic-list').html('');
+            for(let f of file){
+                new Compressor(f, { //使用compressor.js压缩图片
+                    strict: true,
+                    checkOrientation: true,
+                    maxWidth: 3000,
+                    maxHeight: 3000,
+                    quality: 0.8,
+                    success(result) {
+                        let piclink = URL.createObjectURL(result);
+                        let format = "<div class=\"mdui-col\">\n" +
+                            "                            <div class=\"mdui-grid-tile\">\n" +
+                            "                                <img class=\"app-pic mdui-img-fluid mdui-img-rounded\" src=\"" + piclink + "\" alt=\"\">\n" +
+                            "                            </div>\n" +
+                            "                        </div>";
+                        $('#pic-list').append(format);
+                        c.set('pic-'+ count, result, result.name); //设置本地压缩后的图片
+                        count++;
+                        console.log(c);
+                    },
+                    error(err) {
+                        console.log(err.message);
+                    },
+                });
+            }
+        }
+        function submitmem(){
+            c.set('time',$('#time-view option:selected').index());
+            c.set('text',$('#mem-text').val());
+            c.set('password',$('#mem-pass').val());
+            c.set('password-tip',$('#mem-pass-tip').val());
+            c.set('pic-count', count);
+            $.ajax({
+                contentType: false,
+                processData: false,
+                url : '{{ route("membox_new") }}',
+                type : 'POST',
+                data: c,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success : function(result){
+                    mdui.alert("发布成功。", function(){
+                        console.log(result);
+                    });
 
+                }
+            });
+        }
+    </script>
 @endsection

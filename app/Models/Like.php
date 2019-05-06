@@ -23,4 +23,12 @@ class Like extends Model
         }
         return $count;
     }
+
+    public function addLike($memboxid,$userid){
+        $id = DB::table('like') -> insertGetId([
+            'memboxid' => $memboxid,
+            'userid' => $userid,
+        ]);
+        return $id;
+    }
 }
