@@ -68,12 +68,17 @@
             </div>
         </div>
         @foreach ($membox as $m)
+            @if($m -> uid == Auth::user() -> id || strtotime($m -> new_time_see) < time())
         <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4 mdui-col-lg-3 mdui-col-xl-2">
                 <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
                     <div class="mdui-card-header mdui-p-a-1">
                         <img class="mdui-card-header-avatar" src="{{asset($m->user->avatar)}}"/>
                         <div class="mdui-card-header-title">{{$m -> user->name}}</div>
-                        <div class="mdui-card-header-subtitle">{{$m -> created_at}}<i class="MDI clock"></i>{{$m -> time_see_remained}}对方可见</div>
+                        <div class="mdui-card-header-subtitle">{{$m -> created_at}}
+                            @if(strtotime($m -> new_time_see) >= time())
+                            <i class="MDI clock"></i>{{$m -> time_see_remained}}对方可见
+                            @endif
+                        </div>
                     </div>
                     <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
                         {{$m -> contents}}
@@ -104,6 +109,7 @@
                     </div>
                 </div>
         </div>
+            @endif
         @endforeach
     </div>
 

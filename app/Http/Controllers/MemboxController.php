@@ -7,10 +7,6 @@ use App\Models\Membox;
 use App\Models\Binding;
 use Auth;
 
-// TODO
-// 缺逻辑
-// 在首页和回忆宝箱中能看见对方正在倒计时的内容
-
 class MemboxController extends Controller
 {
     public function square(){

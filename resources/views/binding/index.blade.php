@@ -61,28 +61,17 @@
                     <div class="mdui-row">
                         <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
                         <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-col-md-8 mdui-textfield mdui-textfield-floating-label mdui-textfield-not-empty">
-                            <label class="mdui-textfield-label">通过邮箱或用户名搜索用户</label>
-                            <input class="mdui-textfield-input" id="account-search" type="text">
+                            <form id="search-user-form" action="post">
+                                <label class="mdui-textfield-label">通过邮箱或用户名搜索用户</label>
+                                <input class="mdui-textfield-input" id="account-search" type="text">
+                            </form>
                         </div>-
                     </div>
                     <div class="mdui-row">
                         <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
                         <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-col-md-8">
-                            <ul class="mdui-list">
-                                <li class="mdui-list-item mdui-ripple">
-                                    <div class="mdui-list-item-avatar"><img src="avatar1.jpg"/></div>
-                                    <div class="mdui-list-item-content">
-                                        <div class="mdui-list-item-title">SomeOne</div>
-                                        <div class="mdui-list-item-text mdui-list-item-one-line">男 24岁 南京</div>
-                                    </div>
-                                </li>
-                                <li class="mdui-list-item mdui-ripple">
-                                    <div class="mdui-list-item-avatar"><img src="avatar1.jpg"/></div>
-                                    <div class="mdui-list-item-content">
-                                        <div class="mdui-list-item-title">SomeOne</div>
-                                        <div class="mdui-list-item-text mdui-list-item-one-line">男 24岁 南京</div>
-                                    </div>
-                                </li>
+                            <ul class="mdui-list" id="search-result-list">
+
                             </ul>
                         </div>
                     </div>
@@ -92,6 +81,72 @@
 
         <script>
             window.addEventListener("load",function() {
+                $('#search-user-form').on('submit',function(e){
+                    e.preventDefault();
+                    var search_key = $('#account-search').val();
+                    if(search_key == ''){
+                        mdui.alert('搜索关键词不能为空哦','注意',function(){},{
+                            confirmText : '我知道了'
+                        });
+                        return;
+                    }
+                    $('#search-result-list').html('');
+                    $.ajax({
+                        url : '{{ route("binding_searchUser") }}',
+                        type : 'POST',
+                        data : {
+                            search_key : search_key
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success : function(result){
+                            if(result.ret == 200){
+                                result.data.forEach(user => {
+                                    $('#search-result-list').append(`
+                                        <li class="mdui-list-item mdui-ripple user-item" data-user-id="${user.id}">
+                                        <div class="mdui-list-item-avatar"><img src="${user.avatar}"/></div>
+                                        <div class="mdui-list-item-content">
+                                            <div class="mdui-list-item-title">${user.name}</div>
+                                            <div class="mdui-list-item-text mdui-list-item-one-line">${user.email}</div>
+                                        </div>
+                                    </li>
+                                    `);
+                                });
+
+                                $('.user-item').on('click',function(){
+                                    var user_id = $(this).data('user-id');
+                                    $.ajax({
+                                        url : '{{ route("binding_sendInvite") }}',
+                                        type : 'POST',
+                                        data : {
+                                            user_id : user_id,
+                                        },
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success : function(result){
+                                            if(result.ret == 200){
+                                                mdui.alert('邀请消息已成功发送给对方','成功',function(){},{
+                                                    confirmText : '太棒了'
+                                                });
+                                            }else{
+                                                mdui.alert(result.desc,'注意',function(){},{
+                                                    confirmText : '我知道了'
+                                                });
+                                            }
+                                        }
+                                    });
+                                });
+                            }else{
+                                mdui.alert(result.desc,'注意',function(){},{
+                                    confirmText : '我知道了'
+                                });
+                            }
+                        }
+                    });
+                });
+
                 $('#invite-code-form').on('submit',function(e){
                     e.preventDefault();
                     var invite_code = $('#invite-code').val();
@@ -108,7 +163,9 @@
                             if(result.ret == 200){
                                 window.location = result.data;
                             }else{
-                                alert(result.desc);
+                                mdui.alert(result.desc,'注意',function(){},{
+                                    confirmText : '我知道了'
+                                });
                             }
                         }
                     });
@@ -133,26 +190,26 @@
     </div>
     @else
     <div class="mdui-container mundb-standard-container">
-        <div class="mdui-card mdui-center cardsize mdui-m-a-3 mdui-text-center">
-            <div class="mdui-row-xs-2 mdui-grid-list mdui-p-a-3">
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                <avatar style="width:100%">
-                    <img src="{{asset($user->avatar)}}" alt="avatar">
-                    <div class="mdui-typo-display-1 mdui-m-t-3">{{$user->name}}</div>
-                </avatar>
+        <div class="mdui-card mdui-center mdui-m-a-3 mdui-text-center">
+            <div class="mdui-row mdui-grid-list mdui-p-a-3">
+                <div class="mdui-col-xs-6">
+                    <div class="mdui-grid-tile" style="padding:2rem;">
+                    <avatar>
+                        <img src="{{asset($user->avatar)}}" style="width:10rem;height:10rem;display:inline-block;" class="mdui-img-circle" alt="avatar">
+                        <div class="mdui-typo-display-1 mdui-m-t-3">{{$user->name}}</div>
+                    </avatar>
+                    </div>
+                </div>
+                <div class="mdui-col-xs-6">
+                    <div class="mdui-grid-tile" style="padding:2rem;">
+                    <avatar>
+                        <img src="{{asset($user_object->avatar)}}" style="width:10rem;height:10rem;display:inline-block;" class="mdui-img-circle" alt="avatar">
+                        <div class="mdui-typo-display-1 mdui-m-t-3">{{$user_object->name}}</div>
+                    </avatar>
+                    </div>
                 </div>
             </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                <avatar style="width:100%">
-                    <img src="{{asset($user_object->avatar)}}" alt="avatar">
-                    <div class="mdui-typo-display-1 mdui-m-t-3">{{$user_object->name}}</div>
-                </avatar>
-                </div>
-            </div>
-        </div>
-            <div class="mdui-typo-headline-opacity mdui-m-a-3 mdui-text-center">在一起已经NaN天</div>
+            <div class="mdui-typo-headline-opacity mdui-m-a-3 mdui-text-center">在一起已经 {{$day_together}} 天啦</div>
         </div>
     </div>
     @endif

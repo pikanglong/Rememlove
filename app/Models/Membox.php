@@ -24,6 +24,7 @@ class Membox extends Model
         $membox = DB::table('membox') -> where('private','=','0') -> where('deleted_at','=',null) -> orderBy('created_at','desc') -> get();
         foreach($membox as $m)
         {
+            $m -> user = DB::table('users') -> where('id','=',$m -> uid) -> first();
             $m -> username = DB::table('users') -> where('id','=',$m -> uid) -> first() -> name;
         }
         return $membox;
