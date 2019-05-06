@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Binding;
 use App\Models\Users;
 use App\Models\Membox;
+use App\Models\Like;
 
 class AccountController extends Controller
 {
@@ -20,6 +21,9 @@ class AccountController extends Controller
         $Membox = new Membox();
         $mymemboxcount = $Membox -> countMembox(Auth::user()->id);
         $halfmemboxcount = $Membox -> countMembox($halfuid);
+        $Like = new Like();
+        $mylikecount = $Like -> countLike(Auth::user()->id);
+        $halflikecount = $Like -> countLike($halfuid);
         return view('account.dashboard',[
             'page_title' => "用户",
             'site_title' => "记恋",
@@ -27,6 +31,8 @@ class AccountController extends Controller
             'halfdetail' => $halfdetail,
             'mymemboxcount' => $mymemboxcount,
             'halfmemboxcount' => $halfmemboxcount,
+            'mylikecount' => $mylikecount,
+            'halflikecount' => $halflikecount,
         ]);
     }
 
