@@ -197,7 +197,7 @@
                         console.log(result);
                         setTimeout(function(){
                             window.location.reload();
-                        },1000); // 跳转前等待
+                        },1); // 跳转前等待
                     });
                 }else{
                     mdui.alert(result.desc, function(){
