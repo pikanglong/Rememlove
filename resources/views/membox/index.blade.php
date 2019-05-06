@@ -17,6 +17,7 @@
                         <div class="mdui-card-header-title">{{Auth::user()->name}}</div>
                         <div class="mdui-card-header-subtitle">
                             <select id="time-view" class="mdui-select">
+                                <option value="0">全站广场公开</option>
                                 <option value="1">对方直接可见</option>
                                 <option value="2">1小时后对方可见</option>
                                 <option value="3">6小时后对方可见</option>
@@ -96,10 +97,10 @@
                 </div>
                 @endif
                 <div class="mdui-card-actions card-buttom">
-                    <div class="mdui-chip">
+                    {{-- <div class="mdui-chip">
                         <span class="mdui-chip-icon"><i class="MDI heart"></i></span>
                         <span class="mdui-chip-title">喜欢</span>
-                    </div>
+                    </div> --}}
                     <div class="mdui-chip">
                         <span class="mdui-chip-icon"><i class="MDI share"></i></span>
                         <span class="mdui-chip-title">分享</span>
