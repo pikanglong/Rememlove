@@ -133,25 +133,25 @@
     </div>
     @else
     <div class="mdui-container mundb-standard-container">
-        <div class="mdui-card mdui-center cardsize mdui-m-a-3 mdui-text-center">
-            <div class="mdui-row-xs-2 mdui-grid-list mdui-p-a-3">
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                <avatar style="width:100%">
-                    <img src="{{asset($user->avatar)}}" alt="avatar">
-                    <div class="mdui-typo-display-1 mdui-m-t-3">{{$user->name}}</div>
-                </avatar>
+        <div class="mdui-card mdui-center mdui-m-a-3 mdui-text-center">
+            <div class="mdui-row mdui-grid-list mdui-p-a-3">
+                <div class="mdui-col-xs-6">
+                    <div class="mdui-grid-tile" style="padding:2rem;">
+                    <avatar>
+                        <img src="{{asset($user->avatar)}}" style="width:10rem;height:10rem;display:inline-block;" class="mdui-img-circle" alt="avatar">
+                        <div class="mdui-typo-display-1 mdui-m-t-3">{{$user->name}}</div>
+                    </avatar>
+                    </div>
+                </div>
+                <div class="mdui-col-xs-6">
+                    <div class="mdui-grid-tile" style="padding:2rem;">
+                    <avatar>
+                        <img src="{{asset($user_object->avatar)}}" style="width:10rem;height:10rem;display:inline-block;" class="mdui-img-circle" alt="avatar">
+                        <div class="mdui-typo-display-1 mdui-m-t-3">{{$user_object->name}}</div>
+                    </avatar>
+                    </div>
                 </div>
             </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                <avatar style="width:100%">
-                    <img src="{{asset($user_object->avatar)}}" alt="avatar">
-                    <div class="mdui-typo-display-1 mdui-m-t-3">{{$user_object->name}}</div>
-                </avatar>
-                </div>
-            </div>
-        </div>
             <div class="mdui-typo-headline-opacity mdui-m-a-3 mdui-text-center">在一起已经NaN天</div>
         </div>
     </div>
