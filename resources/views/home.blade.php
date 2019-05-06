@@ -49,11 +49,11 @@
                     <button class="mdui-btn mdui-color-theme-accent " onclick="$('#pic_upload').click()">
                         <i class="mdui-icon material-icons">image</i>上传图片
                     </button>
-                    <button class="mdui-btn mdui-ripple mdui-color-theme" mdui-dialog="{target: '#encrypt'}">设置密码</button>
+                    <button class="mdui-btn mdui-ripple mdui-color-theme" mdui-dialog="{target: '#encrypt'}">设置密令</button>
                 </div>
                 <div class="mdui-dialog" id="encrypt">
                     <div class="mdui-dialog-title">加密你的美好回忆</div>
-                    <div class="mdui-dialog-content">请输入密码和提示。
+                    <div class="mdui-dialog-content">请输入密令和提示。
                         <div class="mdui-textfield">
                             <input name="mem-pass" id="mem-pass" type="text" class="mdui-textfield-input" placeholder="设置密令" >
                         </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="mdui-dialog-actions">
                         <button class="mdui-btn mdui-ripple">取消</button>
-                        <button class="mdui-btn mdui-ripple">确定</button>
+                        <button class="mdui-btn mdui-ripple" onclick="">确定</button>
                     </div>
                 </div>
             </div>
@@ -194,6 +194,7 @@
             success : function(result){
                 if(result.ret === 200){
                     mdui.alert("发布成功。", function(){
+                        window.location.reload();
                         console.log(result);
                         setTimeout(function(){
                             window.location.reload();
