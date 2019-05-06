@@ -88,7 +88,7 @@
                     <div class="mdui-card-media mdui-p-l-1 mdui-m-b-3 mdui-p-r-1">
                         <div class="mdui-row">
                             @foreach($m->pic as $p)
-                            <div class="mdui-col-sm-4 mdui-p-a-1" onclick="show();">
+                            <div class="mdui-col-sm-4 mdui-p-a-1" onclick="show('{{asset('static/img/membox/'.$p) }}');">
                                 <img class="app-pic mdui-img-fluid mdui-img-rounded" src="{{asset('static/img/membox/'.$p) }}" alt="">
                             </div>
                             @endforeach
@@ -135,25 +135,26 @@
           <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-blue"><i class="mdui-icon material-icons">touch_app</i></button>
         </div>
 </div>
-<div id="pic_view" class="hide">
-    <button class="mdui-btn mdui-btn-icon mdui-float-left mdui-color-theme" onclick="hide_pic_view();">
-        <i class="mdui-icon material-icons">chevron_left</i>
-    </button>
-    <img class="mdui-center app-pic mdui-img-fluid mdui-img-rounded" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
-</div>
+        <div id="pic_view" class="hide">
+            <button class="mdui-btn mdui-btn-icon mdui-float-left mdui-color-theme" onclick="hide_pic_view();">
+                <i class="mdui-icon material-icons">chevron_left</i>
+            </button>
+            <img id="big_pic_view" class="mdui-center app-pic mdui-img-fluid mdui-img-rounded" src="" alt="">
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.0.5/dist/compressor.min.js"></script>
 <script>
-    function show(){
+    function show(url){
         $('#fullview').removeClass('hide');
         $('#fullview').addClass('showdiv');
         $('#pic_view').removeClass('hide');
-        $('#pic_view').addClass('showdiv2 animated bounce');
+        $('#pic_view').addClass('showdiv2');
+        $('#big_pic_view').attr("src",url);
     }
     function hide_pic_view(){
         $('#fullview').removeClass('showdiv');
         $('#fullview').addClass('hide');
         $('#pic_view').addClass('hide');
-        $('#pic_view').removeClass('showdiv2 animated bounce');
+        $('#pic_view').removeClass('showdiv2');
     }
     const c = new FormData();
     let count = 0;

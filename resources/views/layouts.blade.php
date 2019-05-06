@@ -212,11 +212,6 @@
     </div>
     @endauth
     @yield('template')
-    <footer class="mdui-bottom-nav mdui-bottom-nav-text-auto mdui-color-blue-grey mundb-footer">
-    {{-- <footer class="  d-print-none footer-app"> --}}
-        <p>&copy;2019 记恋</p>
-    {{-- </footer> --}}
-    </footer>
     <div id="fullview" class="hide">
     </div>
     <script src="/static/library/jquery/dist/jquery.min.js"></script>
