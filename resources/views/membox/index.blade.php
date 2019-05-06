@@ -101,10 +101,10 @@
                         <span class="mdui-chip-icon"><i class="MDI heart"></i></span>
                         <span class="mdui-chip-title">喜欢</span>
                     </div> --}}
-                    <div class="mdui-chip">
+                    {{-- <div class="mdui-chip">
                         <span class="mdui-chip-icon"><i class="MDI share"></i></span>
                         <span class="mdui-chip-title">分享</span>
-                    </div>
+                    </div> --}}
                     <button class="mdui-btn mdui-btn-icon mdui-float-right mdui-color-theme" onclick="show();">
                         <i class="mdui-icon material-icons">chevron_right</i>
                     </button>
