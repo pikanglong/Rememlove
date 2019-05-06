@@ -100,6 +100,7 @@ class CheckinController extends Controller
         $new_task->complete = 0;
         $new_task->img = null;
         $new_task->share_link = null;
+        $new_task->remarks = '';
 
         $new_task->save();
 
