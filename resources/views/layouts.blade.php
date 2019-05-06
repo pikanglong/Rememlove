@@ -190,14 +190,14 @@
                 <a class="mdui-list-item-content" href="/checkin/">打卡</a>
               </li>
 
-              <li class="mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons">drafts</i>
-                <div class="mdui-list-item-content">日常</div>
-              </li>
               <li class="mdui-subheader">发现</li>
                 <li class="mdui-list-item mdui-ripple">
                     <i class="mdui-list-item-icon mdui-icon material-icons">adjust</i>
-                    <a class="mdui-list-item-content" href="/binding/index">绑定对方</a>
+                    <a class="mdui-list-item-content" href="/binding/index">绑定</a>
+                </li>
+                <li class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">message</i>
+                    <a class="mdui-list-item-content" href="/message/index">消息</a>
                 </li>
                 <li class="mdui-subheader">账户</li>
               <li class="mdui-list-item mdui-ripple">

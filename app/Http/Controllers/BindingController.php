@@ -50,12 +50,16 @@ class BindingController extends Controller
         $binding_id = $binding->getBindingIdByUid($user->id);
         if(!$binding_id){
             $invite_code = $invite->getUserCode($user->id);
+        }else{
+            $day_together = (int)floor((time() - strtotime(Binding::find($binding_id)->created_at))/60/60/24);
         }
+
         return View('binding.index',[
             'page_title' => "绑定",
             'site_title' => "记恋",
             'user' => $binding_id ? $user : null,
             'user_object' => $binding_id ? $users->getObject($user->id) : null,
+            'day_together' => $binding_id ? $day_together : null,
             'binding_id' => $binding_id,
             'invite_code' => $invite_code ?? null,
         ]);

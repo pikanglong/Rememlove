@@ -19,11 +19,18 @@ Route::group(['prefix' => 'ajax','namespace' => 'Ajax','middleware' => 'auth'], 
         Route::post('/newInviteCode', 'BindingController@newInviteCode')->name('binding_newInviteCode');
         Route::post('/confirmInvite', 'BindingController@confirmInvite')->name('binding_confirmInvite');
         Route::post('/queryCode', 'BindingController@queryCode')->name('binding_queryCode');
-        Route::post('/updateavatar', 'AccountController@updateAvatar')->name('account_updateAvatar');
+        Route::post('/searchUser', 'BindingController@searchUser')->name('binding_searchUser');
+        Route::post('/sendInvite', 'BindingController@sendInvite')->name('binding_sendInvite');
     });
     Route::group(['prefix' => 'checkin'], function () {
         Route::post('/newTask/{mode}', 'CheckinController@newTask')->name('check_newTask');
         Route::post('/submit', 'CheckinController@submit')->name('check_submit');
+    });
+    Route::group(['prefix' => 'message'], function () {
+        Route::post('/read', 'MessageController@read')->name('message_read');
+    });
+    Route::group(['prefix' => 'account'], function () {
+        Route::post('/updateavatar', 'AccountController@updateAvatar')->name('account_updateAvatar');
     });
 });
 
@@ -41,7 +48,7 @@ Route::group(['prefix' => 'checkin','middleware' => 'auth'], function () {
     Route::get('/index', 'CheckinController@index')->name('checkin_index');
 });
 
-Route::group(['prefix' => 'message'], function () {
+Route::group(['prefix' => 'message','middleware' => 'auth'], function () {
     Route::get('/', 'MessageController@index')->name('message_index');
     Route::get('/index', 'MessageController@index')->name('message_index');
     Route::get('/view', 'MessageController@view')->name('message_view');
