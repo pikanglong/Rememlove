@@ -126,10 +126,11 @@
                 $('#pic_view').addClass('hide');
                 $('#pic_view').removeClass('showdiv2');
             }
-            const c = new FormData();
+            var c = new FormData();
             let count = 0;
             function SelectedImg(file){
                 $('#pic-list').html('');
+                c = new FormData();
                 for(let f of file){
                     new Compressor(f, { //使用compressor.js压缩图片
                         strict: true,
@@ -172,9 +173,10 @@
                     },
                     success : function(result){
                         mdui.alert("发布成功。", function(){
-                            console.log(result);
+                            setTimeout(function(){
+                                window.location.reload();
+                            },100);
                         });
-
                     }
                 });
             }

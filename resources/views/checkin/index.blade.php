@@ -225,7 +225,9 @@
                     success : function(result){
                         if(result.ret == 200){
                             mdui.alert('打卡完成，请再接再厉哦','成功',function(){
-                                window.location = result.data;
+                                setTimeout(function(){
+                                    window.location = result.data;
+                                },100);
                             },{
                                 confirmText : '好的呢'
                             });
