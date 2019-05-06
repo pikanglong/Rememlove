@@ -19,7 +19,7 @@
                 <br>
                 <div class="mdui-typo-title"><strong>{{$halfmemboxcount}}</strong> 回忆 <strong>{{$halflikecount}}</strong> 喜欢</div>
             </div>
-            <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3">
+            <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3 mdui-text-right">
                 <avatar style="width:10rem;height:10rem;">
                         <img src="{{ asset($halfdetail->avatar) }}" class="mdui-img-circle" alt="avatar">
                 </avatar>
@@ -29,7 +29,7 @@
                 <div class="mdui-typo-headline">还没有配对TA呢</div>
                 <br>
             </div>
-            <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3">
+            <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3 mdui-text-right">
                 <avatar style="width:10rem;height:10rem;">
                     <img class="mdui-img-circle" src="https://scontent-sin2-2.cdninstagram.com/vp/fbaa80544aa8e7be95668e1344fbb3b4/5D5E6E38/t51.2885-19/s320x320/54732379_639022049871378_1829252946760564736_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="avatar">
                 </avatar>
