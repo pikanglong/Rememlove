@@ -25,6 +25,9 @@ Route::group(['prefix' => 'ajax','namespace' => 'Ajax','middleware' => 'auth'], 
         Route::post('/newTask/{mode}', 'CheckinController@newTask')->name('check_newTask');
         Route::post('/submit', 'CheckinController@submit')->name('check_submit');
     });
+    Route::group(['prefix' => 'membox'], function () {
+        Route::post('/new', 'MemboxController@newpost')->name('membox_new');
+    });
 });
 
 Route::group(['prefix' => 'membox'], function () {

@@ -67,8 +67,8 @@
                 </div>
             </div>
         </div>
+        @foreach ($membox as $m)
         <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4 mdui-col-lg-3 mdui-col-xl-2">
-                @foreach ($membox as $m)
                 <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
                     <div class="mdui-card-header mdui-p-a-1">
                         <img class="mdui-card-header-avatar" src="{{asset($m->user->avatar)}}"/>
@@ -103,8 +103,8 @@
                         </button>
                     </div>
                 </div>
-                @endforeach
         </div>
+        @endforeach
     </div>
 
 <div class="mdui-fab-wrapper" id="exampleFab" mdui-fab="{trigger: 'hover'}">
@@ -175,18 +175,19 @@
         c.set('time',$('#time-view option:selected').index());
         c.set('text',$('#mem-text').val());
         c.set('password',$('#mem-pass').val());
-        c.set('password-tips',$('#mem-pass-tip').val());
+        c.set('password-tip',$('#mem-pass-tip').val());
         $.ajax({
             contentType: false,
             processData: false,
-            url : '{{ route("account_updateAvatar") }}',
+            url : '{{ route("membox_new") }}',
             type : 'POST',
             data: c,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            success : function(){
+            success : function(result){
                 mdui.alert("发布成功。", function(){
+                    console.log(result);
                 });
 
             }
