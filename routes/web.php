@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home2');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/share/{sharelink}', 'ShareController@view')->name('share');
 
 Route::group(['prefix' => 'ajax','namespace' => 'Ajax','middleware' => 'auth'], function () {
     Route::group(['prefix' => 'binding'], function () {
