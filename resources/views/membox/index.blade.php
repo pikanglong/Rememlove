@@ -101,10 +101,6 @@
                         <span class="mdui-chip-title">喜欢</span>
                     </div>
                     <div class="mdui-chip">
-                        <span class="mdui-chip-icon"><i class="MDI comment"></i></span>
-                        <span class="mdui-chip-title">评论</span>
-                    </div>
-                    <div class="mdui-chip">
                         <span class="mdui-chip-icon"><i class="MDI share"></i></span>
                         <span class="mdui-chip-title">分享</span>
                     </div>
