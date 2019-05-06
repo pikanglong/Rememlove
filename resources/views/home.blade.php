@@ -1,13 +1,13 @@
 @extends('layouts')
 
 @section('template')
-<div class="mdui-container-fluid mundb-standard- mdui-p-a-2">
+<div class="mdui-container-fluid mdui-p-a-2">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
         </div>
     @endif
-    <div class="mdui-row mdui-center">
+    <div class="mdui-row">
         <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4 mdui-col-lg-3 mdui-col-xl-2">
             <div class="mdui-card" style="margin-top:8px; margin-bottom:8px">
                 <div class="mdui-card-content mdui-m-a-1 mdui-p-a-0">
@@ -86,9 +86,9 @@
                     </div>
                     @if($m->pic_count > 0)
                     <div class="mdui-card-media mdui-p-l-1 mdui-m-b-3 mdui-p-r-1">
-                        <div class="mdui-row">
+                        <div class="mdui-row-xs-3 mdui-grid-list">
                             @foreach($m->pic as $p)
-                            <div class="mdui-col-sm-4 mdui-p-a-1" onclick="show('{{asset('static/img/membox/'.$p) }}');">
+                            <div class="mdui-col mdui-p-a-1" onclick="show('{{asset('static/img/membox/'.$p) }}');">
                                 <img class="app-pic mdui-img-fluid mdui-img-rounded" src="{{asset('static/img/membox/'.$p) }}" alt="">
                             </div>
                             @endforeach
@@ -110,18 +110,18 @@
             @endif
         @endforeach
     </div>
-
-<div class="mdui-fab-wrapper" id="exampleFab" mdui-fab="{trigger: 'hover'}">
-        <button class="mdui-fab mdui-ripple mdui-color-theme-accent" onclick="smoothscroll()">
-            <i class="mdui-icon material-icons">arrow_upward</i>
-        </button>
-</div>
+        <div class="mdui-fab-wrapper" id="exampleFab" mdui-fab="{trigger: 'hover'}">
+            <button class="mdui-fab mdui-ripple mdui-color-theme-accent" onclick="smoothscroll()">
+                <i class="mdui-icon material-icons">arrow_upward</i>
+            </button>
+        </div>
         <div id="pic_view" class="hide">
             <button class="mdui-btn mdui-btn-icon mdui-float-left mdui-color-theme" onclick="hide_pic_view();">
                 <i class="mdui-icon material-icons">chevron_left</i>
             </button>
             <img id="big_pic_view" class="mdui-center app-pic mdui-img-fluid mdui-img-rounded" src="" alt="">
         </div>
+</div>
         <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.0.5/dist/compressor.min.js"></script>
 <script>
     function smoothscroll(){
