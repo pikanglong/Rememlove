@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 @endif
-                {{-- <div class="mdui-card-actions card-buttom"> --}}
+                <div class="mdui-card-actions card-buttom">
                     {{-- <div class="mdui-chip">
                         <span class="mdui-chip-icon"><i class="MDI heart"></i></span>
                         <span class="mdui-chip-title">喜欢</span>
@@ -107,10 +107,10 @@
                     </div> --}}
                     {{-- <button class="mdui-btn mdui-btn-icon mdui-float-right mdui-color-theme" onclick="show();">
                         <i class="mdui-icon material-icons">chevron_right</i>
-                    </button>
+                    </button> --}}
                 </div>
             </div>
-        </div> --}}
+        </div>
         @endif
         @endforeach
     </div>

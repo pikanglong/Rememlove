@@ -100,6 +100,7 @@
 {{--                            <span class="mdui-chip-icon mdui-color-pink"><i class="MDI heart"></i></span>--}}
 {{--                            <span class="mdui-chip-title">喜欢</span>--}}
 {{--                        </div>--}}
+@if($m -> uid == Auth::user() -> id )
                         <div class="mdui-chip" onclick="share({{$m->id}});">
                             <span id="share-{{$m->id}}" class="mdui-chip-icon @if($m->share_link != '') mdui-color-teal @endif "><i class="MDI share"></i></span>
                             <span class="mdui-chip-title">分享</span>
@@ -107,6 +108,7 @@
                     </div>
                 </div>
         </div>
+        @endif
             @endif
         @endforeach
     </div>
