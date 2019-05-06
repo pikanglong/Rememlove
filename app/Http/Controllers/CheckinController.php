@@ -27,7 +27,7 @@ class CheckinController extends Controller
             $img = explode('|',$img);
             array_pop($img);
             foreach ($img as &$value) {
-                $value = '/static/img/upload/'.$value;
+                $value = '/static/img/membox/'.$value;
             }
         }
 

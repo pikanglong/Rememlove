@@ -184,6 +184,8 @@
             }
             var form_data = new FormData();
             var i = 0;
+            var file_size = 0;
+
             for (const file of files) {
                 new Compressor(file, {
                     strict: true,
@@ -193,6 +195,7 @@
                     quality: 0.8,
                     success(result) {
                         form_data.append('pic_' + i, result);
+                        file_size += result.size / 1024;
                         i++;
                     },
                     error(err) {
@@ -203,6 +206,13 @@
             form_data.append('remarks',remarks);
             form_data.append('binding_id', {{ $binding_id }} )
             setTimeout(function(){
+                console.log(file_size);
+                if(file_size >= 2048){
+                    mdui.alert('上传文件总大小不能超过2M哦','注意',function(){},{
+                        confirmText : '我知道了'
+                    });
+                    return;
+                }
                 $.ajax({
                     url : '{{route("check_submit")}}',
                     type : 'POST',

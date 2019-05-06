@@ -1,7 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
-/public/static/img/upload
+/public/static/img/membox
 /public/static/img/avatar/upload
 /storage/*.key
 /vendor
