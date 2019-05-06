@@ -203,7 +203,7 @@
             success : function(result){
                 if (result.ret == 200)
                     $('#share-'+mid).addClass('mdui-color-teal');
-                mdui.alert("现在可以把<br><strong>{{asset('share')}}/" + result.desc + "</strong><br>分享给小伙伴们们查看了。","成功分享", function(){
+                mdui.alert("现在可以把<br><strong>{{asset('share')}}/" + result.desc + "</strong><br>分享给小伙伴们查看了。","成功分享", function(){
 
                 });
 
