@@ -49,7 +49,7 @@ class CheckinController extends Controller
         $pic_list = ['pic_0', 'pic_1', 'pic_2', 'pic_3'];
         foreach ($pic_list as $value) {
             if(!empty($request->file($value)) && $request->file($value)->isValid()){
-                $path_temp = $request->file($value)->store('/static/img/upload','web_root');
+                $path_temp = $request->file($value)->store('/static/img/membox','web_root');
                 $file_name = explode('/',$path_temp);
                 $file_name = $file_name[count($file_name) - 1];
                 $path .= $file_name.'|';

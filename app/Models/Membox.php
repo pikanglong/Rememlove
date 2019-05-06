@@ -15,6 +15,9 @@ class Membox extends Model
         {
             $m -> user = DB::table('users') -> where('id','=',$m -> uid) -> first();
             $m -> time_see_remained = $this -> formatTime($m -> new_time_see);
+            $pic = explode('|',$m->img);
+            $m -> pic_count = intval($pic[0]);
+            $m -> pic = array_slice($pic, 1);
         }
         return $membox;
     }

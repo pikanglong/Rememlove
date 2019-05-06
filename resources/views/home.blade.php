@@ -16,6 +16,7 @@
                         <div class="mdui-card-header-title">{{Auth::user()->name}}</div>
                         <div class="mdui-card-header-subtitle">
                             <select id="time-view" class="mdui-select">
+                                <option value="0">全站广场公开</option>
                                 <option value="1">对方直接可见</option>
                                 <option value="2">1小时后对方可见</option>
                                 <option value="3">6小时后对方可见</option>
@@ -83,13 +84,17 @@
                     <div class="mdui-card-content mdui-p-l-1 mdui-p-t-0 mdui-p-b-0">
                         {{$m -> contents}}
                     </div>
-                    <div class="mdui-card-media mdui-p-l-1 mdui-m-b-3">
+                    @if($m->pic_count > 0)
+                    <div class="mdui-card-media mdui-p-l-1 mdui-m-b-3 mdui-p-r-1">
                         <div class="mdui-row">
+                            @foreach($m->pic as $p)
                             <div class="mdui-col-sm-4 mdui-p-a-1" onclick="show();">
-                                <img class="app-pic mdui-img-fluid mdui-img-rounded" src="https://scontent-sin2-2.cdninstagram.com/vp/1f007179d5a5b56f03dc3eaa1288fd8d/5D5A80B1/t51.2885-15/sh0.08/e35/p640x640/58409400_2258306290894954_4539551133726795669_n.jpg?_nc_ht=scontent-sin2-2.cdninstagram.com" alt="">
+                                <img class="app-pic mdui-img-fluid mdui-img-rounded" src="{{asset('static/img/membox/'.$p) }}" alt="">
                             </div>
+                            @endforeach
                         </div>
                     </div>
+                    @endif
                     <div class="mdui-card-actions card-buttom">
                         <div class="mdui-chip">
                             <span class="mdui-chip-icon"><i class="MDI heart"></i></span>
@@ -150,7 +155,8 @@
         $('#pic_view').addClass('hide');
         $('#pic_view').removeClass('showdiv2 animated bounce');
     }
-    let c = new FormData();
+    const c = new FormData();
+    let count = 0;
     function SelectedImg(file){
         $('#pic-list').html('');
         for(let f of file){
@@ -168,7 +174,8 @@
                         "                            </div>\n" +
                         "                        </div>";
                     $('#pic-list').append(format);
-                    c.append('pic', result, result.name); //设置本地压缩后的图片
+                    c.set('pic-'+ count, result, result.name); //设置本地压缩后的图片
+                    count++;
                     console.log(c);
                 },
                 error(err) {
@@ -182,6 +189,7 @@
         c.set('text',$('#mem-text').val());
         c.set('password',$('#mem-pass').val());
         c.set('password-tip',$('#mem-pass-tip').val());
+        c.set('pic-count', count);
         $.ajax({
             contentType: false,
             processData: false,

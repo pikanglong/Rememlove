@@ -16,22 +16,23 @@ class MemboxController extends Controller
         $text = $request->input('text');
         $password = $request->input('password');
         $password_tip = $request->input('password-tip');
-        $pics = $request->file("pic");
-        //return "aaa";
-        $path = '';
+        $count = intval($request->input("pic-count"));
+        $path = strval($count);
         $valid = true;
-        if($request->hasFile($pics)){
-            foreach ($pics as $value) {
-                if($request->file($value)->isValid()){
-                    $path_temp = $request->file($value)->store('/static/img/upload','web_root');
+        if($count > 0){
+            for($a=0;$a<$count;$a++){
+                $str = "pic-".strval($a);
+                if($request->file($str)->isValid()){
+                    $path_temp = $request->file($str)->store('/static/img/membox','web_root');
                     $file_name = explode('/',$path_temp);
                     $file_name = $file_name[count($file_name) - 1];
-                    $path .= $file_name.'|';
+                    $path .= '|'.$file_name;
                 }else{
                     $valid = false;
                 }
             }
         }
+
         if(!$valid){
             return AjaxResponse::err(5003);
         }
