@@ -1,9 +1,9 @@
-# BrainHole
-A repository for NJUPT mind-blowing programming week
+# Rememlove（记恋）
+这是南京邮电大学2019脑洞程序设计大赛的一个比赛作品。竞赛的规则[点击这里](https://mp.weixin.qq.com/s/uNcCmo8hhJMujPMb8zF9Aw)可以查看。在这里要感谢[高凡](https://github.com/goufaan)和[曹轶峰](https://github.com/X3ZvaWQ)同学。高凡同学在UI方面做出了杰出的贡献，曹轶峰同学的代码逻辑严谨、清晰易读，在演示时起到了很不错的效果。
 
 ### 安装指南
 
-Here is detailed step about deploying 记恋:
+Here is detailed step about deploying Rememlove:
 
 1. You need to have a server and installed [PHP](http://php.net/downloads.php) and [Composer](https://getcomposer.org);
 
@@ -11,7 +11,7 @@ Here is detailed step about deploying 记恋:
 
 3. Change your website root to `public` folder and then, if there is a `open_basedir` restriction, remove it;
 
-4. Now run the following commands at the root folder of 记恋;
+4. Now run the following commands at the root folder of Rememlove;
 
 ```
 composer install
@@ -40,7 +40,7 @@ php artisan migrate
 php artisan storage:link
 ```
 
-8. 记恋's up-and-running, enjoy!
+8. Rememlove's up-and-running, enjoy!
 
 ### 基本功能
 
@@ -52,11 +52,11 @@ php artisan storage:link
 
 - [X] 菜单
     - [X] 显示功能
-- [ ] 回忆宝箱
+- [X] 回忆宝箱
     - [X] 记录平时出游的照片
     - [X] 记录悄悄话
     - [X] 允许设定过多长时间之后才允许查看
-    - [ ] 允许设定把某些记录通过短链分享给他人查看
+    - [X] 允许设定把某些记录通过短链分享给他人查看
     - [X] 允许给记录设定密码、提示等
 - [ ] 恋爱打卡
     - [X] 每天一个打卡目标(选项)
