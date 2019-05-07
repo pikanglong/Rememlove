@@ -2,6 +2,7 @@
 
 @section('template')
 <div class="mdui-container mundb-standard-container">
+    <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
     <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-col-md-8">
         <ul class="mdui-list mdui-center">
             @if(count($message_list) != 0)

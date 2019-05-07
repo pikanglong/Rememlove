@@ -87,7 +87,8 @@
                     <div class="mdui-card-media mdui-p-l-1 mdui-m-b-3 mdui-p-r-1">
                         <div class="mdui-row-xs-3 mdui-grid-list">
                             @foreach($m->pic as $p)
-                            <div class="mdui-col mdui-p-a-1" onclick="show('{{asset('static/img/membox/'.$p) }}');">
+                            <div class="mdui-col mdui-p-a-1" onclick="">
+{{--                                show('{{asset('static/img/membox/'.$p) }}');--}}
                                 <img class="app-pic mdui-img-fluid mdui-img-rounded" src="{{asset('static/img/membox/'.$p) }}" alt="">
                             </div>
                             @endforeach

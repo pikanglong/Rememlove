@@ -16,7 +16,7 @@
                 <div id="confirm-box">
                     <div class="mdui-center" style="max-width: 10rem">
                         <avatar style="width:98%">
-                            <img src="{{$user->avatar}}" alt="avatar">
+                            <img src="{{asset($user->avatar)}}" alt="avatar">
                         </avatar>
                     </div>
                     <div class="mdui-typo-display-1 mdui-m-t-3">{{$user->name}}</div>

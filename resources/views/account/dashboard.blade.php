@@ -56,7 +56,9 @@
                 },
                 success : function(){
                     mdui.alert("头像上传成功。", function(){
-                        window.location = "{{ route('account_dashboard') }}";
+                        setTimeout(function(){
+                            window.location.reload();
+                        },100); // 跳转前等待
                     });
 
                 }

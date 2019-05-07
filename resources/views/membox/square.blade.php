@@ -110,6 +110,12 @@
             </div>
             @endforeach
         </div>
+            <div id="pic_view" class="hide">
+                <button class="mdui-btn mdui-btn-icon mdui-float-left mdui-color-theme" onclick="hide_pic_view();">
+                    <i class="mdui-icon material-icons">chevron_left</i>
+                </button>
+                <img id="big_pic_view" class="mdui-center app-pic mdui-img-fluid mdui-img-rounded" src="" alt="">
+            </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.0.5/dist/compressor.min.js"></script>
 <script>
