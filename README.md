@@ -7,7 +7,7 @@ Here is detailed step about deploying Rememlove:
 
 1. You need to have a server and installed [PHP](http://php.net/downloads.php) and [Composer](https://getcomposer.org);
 
-2. Clone ContestEase to your website folder;
+2. Clone Rememlove to your website folder;
 
 3. Change your website root to `public` folder and then, if there is a `open_basedir` restriction, remove it;
 
