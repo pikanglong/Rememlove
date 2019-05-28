@@ -1,5 +1,13 @@
 # Rememlove（记恋）
-这是南京邮电大学2019脑洞程序设计大赛的一个比赛作品。竞赛的规则[点击这里](https://mp.weixin.qq.com/s/uNcCmo8hhJMujPMb8zF9Aw)可以查看。在这里要感谢[高凡](https://github.com/goufaan)和[曹轶峰](https://github.com/X3ZvaWQ)同学。高凡同学在UI方面做出了杰出的贡献，曹轶峰同学的代码逻辑严谨、清晰易读，在演示时起到了很不错的效果。
+这是南京邮电大学2019脑洞程序设计大赛第一名的比赛作品源码。竞赛的规则[点击这里](https://mp.weixin.qq.com/s/uNcCmo8hhJMujPMb8zF9Aw)可以查看。在这里要感谢[高凡](https://github.com/goufaan)和[曹轶峰](https://github.com/X3ZvaWQ)同学。高凡同学在UI方面做出了杰出的贡献，曹轶峰同学的代码逻辑严谨、清晰易读，在演示时起到了很不错的效果。
+
+### 赛后Update
+
+虽然这个程序~~有很多bug~~，需求也没做完，但是短时间内不会再更新维护了。
+
+~~南邮还是柏广凡同学优秀！~~
+
+![最终排名](/rank.jpg)
 
 ### 安装指南
 
